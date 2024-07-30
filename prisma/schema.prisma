@@ -24,12 +24,39 @@ model Dev{
   onlineLink    String
   status        DevStatus 
   images        String[]
-
+  languages     String
   createdAt     DateTime  @default(now())
+}
+model Art{
+  id            String    @id @default(uuid())
+  title         String
+  description   String
+  status        DevStatus 
+  images        String[]
+  languages     String
+  khat          Khat
+  createdAt     DateTime  @default(now())
+
 }
 
 enum DevStatus {
   draft
   published
   archived
+}
+
+enum Languages {
+  Arabic
+  English
+  German
+}
+
+enum Khat {
+  Ruqaa
+  Naskh
+  Diwani
+  DiwaniJali
+  Kufi
+  Taliek
+  Thuluth
 }

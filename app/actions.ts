@@ -2,7 +2,7 @@
 import { parseWithZod } from '@conform-to/zod';
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from "next/navigation";
-import { devSchema } from "./lib/zodSchemas";
+import { ArtSchema, devSchema } from "./lib/zodSchemas";
 import prisma from './lib/db';
 
 
@@ -33,6 +33,7 @@ export async function createDev(prevState: unknown,formData: FormData) {
             onlineLink: submission.value.onlineLink || null,
             images: flattenUrls,
             status: submission.value.status,
+            languages:submission.value.languages,
         },
     });
 
@@ -73,6 +74,7 @@ export async function editDev(prevState: any, formData: FormData) {
             onlineLink: submission.value.onlineLink || null,
             images: flattenUrls,
             status: submission.value.status,
+            languages:submission.value.languages,
         },
     });
 
@@ -94,3 +96,38 @@ export async function deleteDev(formData: FormData) {
     });
     redirect("/admin/dev");
 }
+
+export async function createArt(prevState: unknown,formData: FormData) {
+    const { getUser } = getKindeServerSession();
+    const user = await getUser();
+
+    if (!user || user.email !== process.env.ADMIN_EMAIL) {
+        return redirect("/");
+    }
+
+    const submission = parseWithZod(formData, {
+        schema: ArtSchema});
+
+    if (submission.status !== "success") {
+        return submission.reply();
+    }
+
+    const flattenUrls = submission.value.images.flatMap((urlString) =>
+        urlString.split(",").map((url) => url.trim())
+    );
+
+    await prisma.art.create({
+        data: {
+            title: submission.value.title,
+            description: submission.value.description,
+            images: flattenUrls,
+            status: submission.value.status,
+            languages:submission.value.languages,
+            khat:submission.value.khat,
+
+        },
+    });
+
+    redirect("/admin/art");
+}
+

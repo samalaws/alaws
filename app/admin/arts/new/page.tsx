@@ -1,51 +1,82 @@
 "use client"
-import { createDev } from "@/app/actions";
-import { UploadDropzone } from "@/app/lib/uploadthing";
+import { createArt } from "@/app/actions";
+import { ArtSchema } from "@/app/lib/zodSchemas";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
-import { ChevronLeft, XIcon } from "lucide-react";
-import Link from "next/link";
-import { useFormState } from "react-dom";
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
-import { devSchema } from "@/app/lib/zodSchemas";
+import { ChevronLeft, XIcon } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
+import { useFormState } from "react-dom";
 import Image from "next/image";
+import { UploadDropzone } from "@/app/lib/uploadthing";
 import { SubmitButtons } from "@/app/components/SubmitButtons";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+
+const typeOfKhat =
+[
+    {
+        name: "Ruqaa",
+        value: "ruqaa",
+    },
+    {
+        name: "Naskh",
+        value: "naskh",
+    },
+    {
+        name: "Diwani",
+        value: "diwani",
+    },
+    {
+        name: "Diwani-Jali",
+        value: "diwani-jali",
+    },
+    {
+        name: "Kufi",
+        value: "kufi",
+    },
+    {
+        name: "Taliek",
+        value: "taliek",
+    },
+    {
+        name: "Thuluth",
+        value: "thuluth",
+    },
+]
 
 
-export default function AddNewDev(){
-    const [lastResult, action] = useFormState(createDev, undefined);
+
+export default function AddNewArt() {   
+    const [lastResult, action] = useFormState(createArt, undefined);
     const [form, fields] = useForm({
         lastResult,
         onValidate({ formData }) {
             return parseWithZod(formData, {
-                schema: devSchema,
+                schema: ArtSchema,
             });
         },
         shouldValidate: "onBlur",
         shouldRevalidate: "onInput",
     });
     const [images,setImages] = useState<string[]>([]);
-
     const handelDelete = (index: number) => {
         setImages(images.filter((_, i) => i !== index));
     }
-
     return (
         <>
             <form id={form.id} onSubmit={form.onSubmit} action={action}>
-                <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4">
                     <Button variant="outline" size={"icon"} asChild>
                         <Link href="/admin/dev">
                             <ChevronLeft className="3-6 w-3"/>
                         </Link>
                     </Button>
-                    <h1 className="text-lg tracking-tighter text-gray-600">Development works</h1>
+                    <h1 className="text-lg tracking-tighter text-gray-600">Arts works</h1>
                 </div>
                 <Card className="mt-4">
                     <CardHeader>
@@ -54,22 +85,37 @@ export default function AddNewDev(){
                     </CardHeader>
                     <CardContent>
                         <div className="flex flex-col gap-6">
-                        <div className="flex flex-col gap-3">
-                                <Label>Languages</Label>
-                                <Select
-                                    name={fields.languages.name}
-                                    defaultValue={fields.languages.initialValue}
-                                    key={fields.languages.key}                                
-                                >
-                                    <SelectTrigger>
-                                        <SelectValue placeholder="Select a status" />
-                                    </SelectTrigger>
-                                    <SelectContent >
-                                        <SelectItem value="English" >English</SelectItem>
-                                        <SelectItem value="Arabic">Arabic</SelectItem>
-                                        <SelectItem value="German">German</SelectItem>
-                                    </SelectContent>
-                                </Select>
+                            <div className="flex flex-col gap-3">
+                                    <Label>Languages</Label>
+                                    <Select
+                                        name={fields.languages.name}
+                                        defaultValue={fields.languages.initialValue}
+                                        key={fields.languages.key}                                
+                                    >
+                                        <SelectTrigger>
+                                            <SelectValue placeholder="Select a status" />
+                                        </SelectTrigger>
+                                        <SelectContent >
+                                            <SelectItem value="English" >English</SelectItem>
+                                            <SelectItem value="Arabic">Arabic</SelectItem>
+                                            <SelectItem value="German">German</SelectItem>
+                                        </SelectContent>
+                                    </Select>
+                            </div>
+                            <div className="flex flex-col gap-3">
+                                    <Label>Type of Khat</Label>
+                                    <Select
+                                        name={fields.khat.name}
+                                        defaultValue={fields.khat.initialValue}
+                                        key={fields.khat.key}                                
+                                    >
+                                        <SelectTrigger>
+                                            <SelectValue placeholder="Select a status" />
+                                        </SelectTrigger>
+                                        <SelectContent >
+                                            {typeOfKhat.map((khat) => <SelectItem value={khat.value} key={khat.value}>{khat.name}</SelectItem>)}
+                                        </SelectContent>
+                                    </Select>
                             </div>
                             <div className="flex flex-col gap-3">
                                 <Label>Title</Label>
@@ -91,27 +137,6 @@ export default function AddNewDev(){
                                     key={fields.description.key}
                                 />
                                 <p className="text-red-300 text-xs">*{fields.description.errors}</p>
-                            </div>
-                            <div className="flex flex-col gap-3">
-                                <Label>Github Link</Label>
-                                <Input 
-                                    placeholder="Github Link" 
-                                    type="text"
-                                    key={fields.gitHubLink.key}
-                                    name={fields.gitHubLink.name}
-                                    defaultValue={fields.gitHubLink.initialValue}
-                                />
-                                <p className="text-red-300 text-xs">{fields.gitHubLink.errors}</p>
-                            </div>
-                            <div className="flex flex-col gap-3">
-                                <Label>Online Link</Label>
-                                <Input 
-                                    placeholder="Online Link" 
-                                    type="text"
-                                    key={fields.onlineLink.key}
-                                    name={fields.onlineLink.name}
-                                    defaultValue={fields.onlineLink.initialValue}
-                                />
                             </div>
                             <div className="flex flex-col gap-3">
                                 <Label>Status</Label>
@@ -174,11 +199,11 @@ export default function AddNewDev(){
                     </div>
                     </CardContent>
                     <CardFooter>
-                        <SubmitButtons text="Create new work" />
+                        <SubmitButtons text="Create new Art" />
                     </CardFooter>          
                 </Card>
-            </form>
 
+            </form>
         </>
     );
 }
