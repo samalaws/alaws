@@ -1,6 +1,6 @@
 "use client"
 import { createArt } from "@/app/actions";
-import { ArtSchema } from "@/app/lib/zodSchemas";
+import { artSchema } from "@/app/lib/zodSchemas";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -21,31 +21,31 @@ const typeOfKhat =
 [
     {
         name: "Ruqaa",
-        value: "ruqaa",
+        value: "Ruqaa",
     },
     {
         name: "Naskh",
-        value: "naskh",
+        value: "Naskh",
     },
     {
         name: "Diwani",
-        value: "diwani",
+        value: "Diwani",
     },
     {
         name: "Diwani-Jali",
-        value: "diwani-jali",
+        value: "DiwaniJali",
     },
     {
         name: "Kufi",
-        value: "kufi",
+        value: "Kufi",
     },
     {
         name: "Taliek",
-        value: "taliek",
+        value: "Taliek",
     },
     {
         name: "Thuluth",
-        value: "thuluth",
+        value: "Thuluth",
     },
 ]
 
@@ -57,7 +57,7 @@ export default function AddNewArt() {
         lastResult,
         onValidate({ formData }) {
             return parseWithZod(formData, {
-                schema: ArtSchema,
+                schema: artSchema,
             });
         },
         shouldValidate: "onBlur",
@@ -90,7 +90,7 @@ export default function AddNewArt() {
                                     <Select
                                         name={fields.languages.name}
                                         defaultValue={fields.languages.initialValue}
-                                        key={fields.languages.key}                                
+                                        key={fields.languages.key}
                                     >
                                         <SelectTrigger>
                                             <SelectValue placeholder="Select a status" />
@@ -110,10 +110,17 @@ export default function AddNewArt() {
                                         key={fields.khat.key}                                
                                     >
                                         <SelectTrigger>
-                                            <SelectValue placeholder="Select a status" />
+                                            <SelectValue placeholder="Select a type of khat" />
                                         </SelectTrigger>
                                         <SelectContent >
-                                            {typeOfKhat.map((khat) => <SelectItem value={khat.value} key={khat.value}>{khat.name}</SelectItem>)}
+                                            {typeOfKhat.map((item) => (
+                                                <SelectItem 
+                                                    key={item.name}
+                                                    value={item.value.toString()} 
+                                                >
+                                                    {item.name}
+                                                </SelectItem>
+                                            ))}
                                         </SelectContent>
                                     </Select>
                             </div>
@@ -199,7 +206,7 @@ export default function AddNewArt() {
                     </div>
                     </CardContent>
                     <CardFooter>
-                        <SubmitButtons text="Create new Art" />
+                        <SubmitButtons text="Add new Art" variant="default" />
                     </CardFooter>          
                 </Card>
 

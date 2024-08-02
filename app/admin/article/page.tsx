@@ -1,16 +1,15 @@
 import prisma from "@/app/lib/db";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/ui/table";
 import { MoreHorizontal, PlusCircle } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
 
 async function getData() {
-    const data = await prisma.art.findMany({
+    const data = await prisma.article.findMany({
         orderBy: {
             createdAt: "desc",
         },
@@ -18,22 +17,22 @@ async function getData() {
     return data;
 }
 
-export default async function Arts(){
+export default async function Articles() {
     const data = await getData();
     return (
         <>
             <div className="flex items-center justify-end">
                 <Button asChild className="flex items-center gap-x-2">
-                    <Link href="/admin/arts/new">
+                    <Link href="/admin/article/new">
                         <PlusCircle className="h-4 w-4"/>
-                        <span >Add New Art</span>
+                        <span >Add New Article</span>
                     </Link>          
                 </Button>
             </div>
             <Card className="mt-4">
                 <CardHeader>
-                    <CardTitle>Work Arts</CardTitle>
-                    <CardDescription>Work Arts content</CardDescription>
+                    <CardTitle>Articles</CardTitle>
+                    <CardDescription>Articles content</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <Table>
@@ -41,26 +40,24 @@ export default async function Arts(){
                             <TableRow>
                                 <TableCell>Image</TableCell>
                                 <TableCell>Title</TableCell>
-                                <TableCell>Description</TableCell>
                                 <TableCell>Status</TableCell>
                                 <TableCell>Date</TableCell>
-                                <TableCell>Actions</TableCell>
+                                <TableCell>Actions</TableCell> 
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {data.map((item) => (
+                            {( data).map((item) => (
                                 <TableRow key={item.id}>
                                     <TableCell>
-                                            <Image
-                                                alt="Dev Image"
+                                    <Image
+                                                alt="Article Image"
                                                 src={item.images[0]} 
                                                 height={64} 
                                                 width={64}
                                                 className="rounded-md object-cover h-16 w-16" 
                                             />
-                                        </TableCell>
+                                    </TableCell>
                                     <TableCell>{item.title}</TableCell>
-                                    <TableCell>{item.description}</TableCell>
                                     <TableCell>{item.status}</TableCell>
                                     <TableCell>{new Intl.DateTimeFormat("en-GB").format(item.createdAt)}</TableCell>
                                     <TableCell>
@@ -74,10 +71,10 @@ export default async function Arts(){
                                                 <DropdownMenuLabel>Actions</DropdownMenuLabel>
                                                 <DropdownMenuSeparator />
                                                 <DropdownMenuItem asChild>
-                                                    <Link href={`/admin/arts/${item.id}`}>Edit</Link>
+                                                    <Link href={`/admin/article/${item.id}`}>Edit</Link>
                                                 </DropdownMenuItem>
                                                 <DropdownMenuItem>
-                                                    <Link href={`/admin/arts/${item.id}/delete`}>Delete</Link>
+                                                    <Link href={`/admin/article/${item.id}/delete`}>Delete</Link>
                                                 </DropdownMenuItem>
                                             </DropdownMenuContent>
                                         </DropdownMenu>

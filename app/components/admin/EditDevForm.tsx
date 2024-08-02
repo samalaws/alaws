@@ -22,17 +22,17 @@ import { statuses } from "@/app/lib/statuses";
 
 interface iAppProps {
     data: {
-        id: string;
-        title: string;
-        description: string;
-        gitHubLink: string;
-        onlineLink: string ;
-        status: $Enums.DevStatus;
-        images: string[];
+        id:             string;
+        title:          string;
+        description:    string;
+        gitHubLink:     string;
+        onlineLink:     string ;
+        status:         $Enums.DevStatus;
+        images:         string[];
     }
 }
 
-export function EditForm({ data }: iAppProps) {
+export function EditDevForm({ data }: iAppProps) {
 
     const [images, setImages] = useState<string[]>(data.images);
     const [lastResult, action] = useFormState(editDev, undefined);

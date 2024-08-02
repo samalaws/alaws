@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 
-export default function DeleteRoute({ params }: { params: { id: string } }) {
+export default function DeleteDevRoute({ params }: { params: { id: string } }) {
     return (
         <div className="h-[80vh] w-full flex items-center justify-center">
             <Card className="max-w-xl">

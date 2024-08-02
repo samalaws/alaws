@@ -1,11 +1,11 @@
-import { EditDevForm } from "@/app/components/admin/EditDevForm";
+import { EditArtForm } from "@/app/components/admin/EditArtForm";
 import prisma from "@/app/lib/db";
 import { notFound } from "next/navigation";
 
-async function getData(prodictId: string) {
-    const data = await prisma.dev.findUnique({
+async function getData(artId: string) {
+    const data = await prisma.art.findUnique({
         where: {
-            id: prodictId,
+            id: artId,
         },
     });
     if(!data) {
@@ -14,7 +14,7 @@ async function getData(prodictId: string) {
     return data;
 }
 
-export default async function EditDevRoute({
+export default async function EditRoute({
     params, }:{
     params: {
         id: string
@@ -22,6 +22,6 @@ export default async function EditDevRoute({
 }){
     const data = await getData(params.id);
     return (
-        <EditDevForm data ={data}/>
+        <EditArtForm data ={data}/>
     )
 }

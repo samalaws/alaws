@@ -41,7 +41,6 @@ export default async function Dev(){
                             <TableRow>
                                 <TableCell>Image</TableCell>
                                 <TableCell>Title</TableCell>
-                                <TableCell>Description</TableCell>
                                 <TableCell>Github</TableCell>
                                 <TableCell>Online</TableCell>
                                 <TableCell>Status</TableCell>
@@ -62,9 +61,8 @@ export default async function Dev(){
                                             />
                                         </TableCell>
                                     <TableCell>{item.title}</TableCell>
-                                    <TableCell>{item.description}</TableCell>
-                                    <TableCell>{item.gitHubLink}</TableCell>
-                                    <TableCell>{item.onlineLink}</TableCell>
+                                    <TableCell >{item.gitHubLink}</TableCell>
+                                    <TableCell >{item.onlineLink}</TableCell>
                                     <TableCell>{item.status}</TableCell>
                                     <TableCell>{new Intl.DateTimeFormat("en-GB").format(item.createdAt)}</TableCell>
                                     <TableCell>

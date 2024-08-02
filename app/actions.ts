@@ -2,7 +2,7 @@
 import { parseWithZod } from '@conform-to/zod';
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from "next/navigation";
-import { ArtSchema, devSchema } from "./lib/zodSchemas";
+import { artSchema, devSchema, articleSchema } from "./lib/zodSchemas";
 import prisma from './lib/db';
 
 
@@ -98,6 +98,103 @@ export async function deleteDev(formData: FormData) {
 }
 
 export async function createArt(prevState: unknown,formData: FormData) {
+    
+    const { getUser } = getKindeServerSession();
+    const user = await getUser();
+
+    console.log(user);
+    
+
+    if (!user || user.email !== process.env.ADMIN_EMAIL) {
+        return redirect("/");
+    }
+
+    
+
+    const submission = parseWithZod(formData, {
+        schema: artSchema});
+
+    if (submission.status !== "success") {
+        return submission.reply();
+    }
+
+
+    const flattenUrls = submission.value.images.flatMap((urlString: string) =>
+        urlString.split(",").map((url) => url.trim())
+    );
+
+
+    await prisma.art.create({
+        data: {
+            title:          submission.value.title,
+            description:    submission.value.description,
+            images:         flattenUrls,
+            status:         submission.value.status,
+            languages:      submission.value.languages,
+            khat:           submission.value.khat,
+
+        },
+    });
+
+    redirect("/admin/arts");
+}
+
+export async function editArt(prevState: any, formData: FormData) {
+    
+    const { getUser } = getKindeServerSession();
+    const user = await getUser();
+
+    if (!user || user.email !== process.env.ADMIN_EMAIL) {
+        return redirect("/");
+    }
+    
+    const submission = parseWithZod(formData ,{
+        schema: artSchema,
+    });
+
+    if(submission.status !== "success") {
+        return submission.reply();
+    }
+
+    const flattenUrls = submission.value.images.flatMap((urlString) =>
+        urlString.split(",").map((url) => url.trim())
+    );
+
+    const artId = formData.get("artId") as string;
+
+    await prisma.art.update({
+        where: {
+            id: artId,
+        },
+        data: {
+            title:          submission.value.title,
+            description:    submission.value.description,
+            images:         flattenUrls,
+            status:         submission.value.status,
+            khat:           submission.value.khat,
+        },
+    });
+
+    redirect("/admin/arts");
+}
+
+export async function deleteArt(formData: FormData) {
+    const { getUser } = getKindeServerSession();
+    const user = await getUser();
+
+    if (!user || user.email !== process.env.ADMIN_EMAIL) {
+        return redirect("/");
+    }
+
+    await prisma.art.delete({
+        where: {
+            id: formData.get("id") as string,
+        },
+    });
+    redirect("/admin/arts");
+}
+
+export async function createArticle(prevState: unknown,formData: FormData) {
     const { getUser } = getKindeServerSession();
     const user = await getUser();
 
@@ -106,7 +203,7 @@ export async function createArt(prevState: unknown,formData: FormData) {
     }
 
     const submission = parseWithZod(formData, {
-        schema: ArtSchema});
+        schema: articleSchema});
 
     if (submission.status !== "success") {
         return submission.reply();
@@ -116,18 +213,70 @@ export async function createArt(prevState: unknown,formData: FormData) {
         urlString.split(",").map((url) => url.trim())
     );
 
-    await prisma.art.create({
+    await prisma.article.create({
         data: {
-            title: submission.value.title,
-            description: submission.value.description,
-            images: flattenUrls,
-            status: submission.value.status,
-            languages:submission.value.languages,
-            khat:submission.value.khat,
-
+            title:      submission.value.title,
+            paragraph:  submission.value.paragraph,
+            images:     flattenUrls,
+            status:     submission.value.status,
+            languages:  submission.value.languages,
         },
     });
 
-    redirect("/admin/art");
+    redirect("/admin/article");
 }
 
+export async function editArticle(prevState: any, formData: FormData) {
+    
+    const { getUser } = getKindeServerSession();
+    const user = await getUser();
+
+    if (!user || user.email !== process.env.ADMIN_EMAIL) {
+        return redirect("/");
+    }
+    
+    const submission = parseWithZod(formData ,{
+        schema: articleSchema,
+    });
+
+    if(submission.status !== "success") {
+        return submission.reply();
+    }
+
+    const flattenUrls = submission.value.images.flatMap((urlString) =>
+        urlString.split(",").map((url) => url.trim())
+    );
+
+    const articleId = formData.get("articleId") as string;
+
+    await prisma.article.update({
+        where: {
+            id: articleId,
+        },
+        data: {
+            title: submission.value.title,
+            paragraph: submission.value.paragraph,
+            images: flattenUrls,
+            status: submission.value.status,
+            languages:submission.value.languages,
+        },
+    });
+
+    redirect("/admin/article");
+}
+
+export async function deleteArticle(formData: FormData) {
+    const { getUser } = getKindeServerSession();
+    const user = await getUser();
+
+    if (!user || user.email !== process.env.ADMIN_EMAIL) {
+        return redirect("/");
+    }
+
+    await prisma.article.delete({
+        where: {
+            id: formData.get("id") as string,
+        },
+    });
+    redirect("/admin/article");
+}
