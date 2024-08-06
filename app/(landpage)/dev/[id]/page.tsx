@@ -28,16 +28,15 @@ export default async function Development({ params }: { params: { id: string } }
     const data = await getData(params.id);
     return (
         <>
-            <div className="mx-auto">
-                <span>{}</span>
-                <Image src={data.images[0]} alt={"dev image"}
-                width={650} height={50} className="w-fit m-auto rounded-xl mb-10 "
-                />
+            <div className="mx-auto pt-10 ">
                 <span className="text-sm text-gray-500 ">
                     {new Intl.DateTimeFormat("en-GB").format(data.createdAt)}
                 </span>
-                <h1 className=" mt-5 mb-5 text-3xl font-bold text-gray-700">{data.title}</h1>
-                <p className="text-gray-700">{data.description}</p>
+                <h1 className=" pt-5 pb-5 text-3xl font-bold text-gray-700 ">{data.title}</h1>
+                <Image src={data.images[0]} alt={"dev image"}
+                        width={650} height={50} className="rounded-md bg-cover bg-fixed mb-10"
+                />
+                <p className="text-gray-700">{data.description}</p>                
                 <div>
 
                 </div>

@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Globe } from "lucide-react";
 
-
 export const Languages = [
     {
         id:     0,
@@ -17,9 +16,14 @@ export const Languages = [
     {
         id:     2,
         name:   "AR",
-        value:   "arabic",
+        value:  "arabic",
     },
 ]
+
+interface LanguageContextType {
+    language: 'en' | 'de' | 'ar';
+    setLanguage: (language: 'en' | 'de' | 'ar') => void;
+}
 
 export default function DropDown() {
     return (
