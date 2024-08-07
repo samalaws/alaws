@@ -1,0 +1,31 @@
+{
+  "NavbarLinks": {
+      "dev":{
+        "name": "Entwicklung",
+        "href": "/dev"
+      },
+      "art":{
+        "name": "Kunstwerke",
+        "href": "/art"
+      },
+      "article":{
+        "name": "Artikel",
+        "href": "/article"
+      },
+      "contact":{
+        "name": "Kontakt",
+        "href": "/contact"
+      },
+      "about":{
+        "name": "Über",
+        "href": "/about"
+      }
+    },
+  "DevPage": {
+    "title": "Alle Entwickler",
+    "description": "in dieser Sektion werden alle Entwicklerprojekte angezeigt"
+  },
+  "DevCard": {
+    "title": "Weiterlesen.."
+  }
+}

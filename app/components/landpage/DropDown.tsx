@@ -1,22 +1,28 @@
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Globe } from "lucide-react";
+import Link from "next/link";
 
 export const Languages = [
     {
         id:     0,
         name:   "EN",
         value:   "english",
+        href:   "/en",
+
+        
     },
     {
         id:     1,
         name:   "DE",
         value:   "deutsch",
+        href:   "/de",
     },
     {
         id:     2,
         name:   "AR",
         value:  "arabic",
+        href:   "/ar",
     },
 ]
 
@@ -35,7 +41,9 @@ export default function DropDown() {
                 <DropdownMenuContent className="w-20">
                     {Languages.map((language) => (
                         <DropdownMenuItem key={language.id} className="p-0" >
-                            <Button variant="ghost" className=" text-xs h-6 w-full">{language.name}</Button>
+                            <Link href={language.href} className="text-xs">
+                                <Button variant="ghost" className=" text-xs h-6 w-full">{language.name}</Button>
+                            </Link>
                         </DropdownMenuItem>
                     ))}
                 </DropdownMenuContent>       

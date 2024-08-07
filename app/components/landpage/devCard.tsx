@@ -1,7 +1,6 @@
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
-
 
 interface DevCardProps {
     dev: {
@@ -15,6 +14,7 @@ interface DevCardProps {
 }
 
 export default function DevCard({ dev }: DevCardProps) {
+    const t = useTranslations('DevCard');
     return (
         <>
             <div className="max-w-md mx-auto rounded-md border-solid border-2 shadow-md mb-10">
@@ -46,10 +46,10 @@ export default function DevCard({ dev }: DevCardProps) {
                     </a>
                     <span className="mx-2">|</span>
                     <Link 
-                        href={`/dev/${dev.id}`}
+                        href={`dev/${dev.id}`}
                         className="text-blue-500 hover:underline mr-1"                            
                     >
-                        Read more..
+                        {t('title')}
                     </Link>
                 </div>
                 </div>

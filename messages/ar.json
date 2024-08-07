@@ -1,0 +1,31 @@
+{
+  "NavbarLinks": {
+      "dev":{
+        "name": "تطبيقات",
+        "href": "/dev"
+      },
+      "art":{
+        "name": "خط عربي",
+        "href": "/art"
+      },
+      "article":{
+        "name": "مقالات",
+        "href": "/article"
+      },
+      "contact":{
+        "name": "اتصل بنا",
+        "href": "/contact"
+      },
+      "about":{
+        "name": "من نحن",
+        "href": "/about"
+      }
+    },
+  "DevPage": {
+    "title": "كل التطبيقات",
+    "description": "في هذه القسم سيتم عرض جميع التطبيقات التي تم تطويرها "
+  },
+  "DevCard": {
+    "title": "..اقرأ المزيد"
+  }
+}
