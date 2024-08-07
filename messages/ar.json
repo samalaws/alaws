@@ -2,23 +2,23 @@
   "NavbarLinks": {
       "dev":{
         "name": "تطبيقات",
-        "href": "/dev"
+        "href": "ar/dev"
       },
       "art":{
         "name": "خط عربي",
-        "href": "/art"
+        "href": "ar/art"
       },
       "article":{
         "name": "مقالات",
-        "href": "/article"
+        "href": "ar/article"
       },
       "contact":{
         "name": "اتصل بنا",
-        "href": "/contact"
+        "href": "ar/contact"
       },
       "about":{
         "name": "من نحن",
-        "href": "/about"
+        "href": "ar/about"
       }
     },
   "DevPage": {

@@ -2,23 +2,23 @@
   "NavbarLinks": {
       "dev":{
         "name": "Entwicklung",
-        "href": "/dev"
+        "href": "de/dev"
       },
       "art":{
         "name": "Kunstwerke",
-        "href": "/art"
+        "href": "de/art"
       },
       "article":{
         "name": "Artikel",
-        "href": "/article"
+        "href": "de/article"
       },
       "contact":{
         "name": "Kontakt",
-        "href": "/contact"
+        "href": "de/contact"
       },
       "about":{
         "name": "Über",
-        "href": "/about"
+        "href": "de/about"
       }
     },
   "DevPage": {

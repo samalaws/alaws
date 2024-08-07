@@ -26,11 +26,11 @@ const RootLayout: React.FC<LocaleLayoutProps> = ({
         return (
             <html lang={locale}>
                 <body className={inter.className}>
-                    <Navbar/>
                     <NextIntlClientProvider messages={messages}>
+                        <Navbar/>
                         {children}
+                        <Footer />     
                     </NextIntlClientProvider>
-                    <Footer />     
                 </body>
             </html>
         );

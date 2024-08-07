@@ -31,21 +31,18 @@ export const navLinks = [
 
 
 export function NavbarLinks() {
+    const t = useTranslations('NavbarLinks');
     return (
         <>
             <div className="flex justify-center items-center">
             <div 
                     className="hidden md:flex justify-center items-center gap-x-5 ml-8"
                     >
-                        {navLinks.map((link) => (
-                            <Link
-                            key={link.id}
-                            href={link.href}
-                            className="font-medium text-gray-500 hover:text-gray-700"
-                            >
-                                {link.name}
-                            </Link>
-                        ))}
+                        <Link href={t('dev.href')} className="text-gray-400 hover:text-gray-800">{t('dev.name')}</Link>
+                        <Link href={t('art.href')} className="text-gray-400 hover:text-gray-800">{t('art.name')}</Link>                        
+                        <Link href={t('article.href')} className="text-gray-400 hover:text-gray-800">{t('article.name')}</Link>                        
+                        <Link href={t('contact.href')} className="text-gray-400 hover:text-gray-800">{t('contact.name')}</Link>                        
+                        <Link href={t('about.href')} className="text-gray-400 hover:text-gray-800">{t('about.name')}</Link>                        
                     </div>
             </div>
             
