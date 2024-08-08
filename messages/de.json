@@ -27,5 +27,8 @@
   },
   "DevCard": {
     "title": "Weiterlesen.."
-  }
+  },
+    "Footer":{
+      "copyright": "SamerAlaws. Alle Rechte vorbehalten."
+    }
 }

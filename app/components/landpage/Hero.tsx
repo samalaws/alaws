@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Hero() {
     return (
         <>
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4">
             <Image 
                     src="/images/hero.webp" 
                     alt="Hero image" 

@@ -1,6 +1,7 @@
 import prisma from "@/app/lib/db";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import BackButtonDev from "@/app/components/landpage/backButtonDev";
 
 async function getData(devtId: string) {
     const data = await prisma.dev.findUnique({
@@ -28,8 +29,9 @@ export default async function Development({ params }: { params: { id: string } }
     const data = await getData(params.id);
     return (
         <>
-        <div className="max-w-7xl mx-auto px-4">
-            <div className="mx-auto pt-10 ">
+        <div className="max-w-5xl mx-auto px-4">
+            <div className="mx-auto px-10 py-10 ">
+                <BackButtonDev />
                 <span className="text-sm text-gray-500 ">
                     {new Intl.DateTimeFormat("en-GB").format(data.createdAt)}
                 </span>
