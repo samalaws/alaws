@@ -28,6 +28,7 @@ export default async function Development({ params }: { params: { id: string } }
     const data = await getData(params.id);
     return (
         <>
+        <div className="max-w-7xl mx-auto px-4">
             <div className="mx-auto pt-10 ">
                 <span className="text-sm text-gray-500 ">
                     {new Intl.DateTimeFormat("en-GB").format(data.createdAt)}
@@ -58,6 +59,8 @@ export default async function Development({ params }: { params: { id: string } }
                     </a>
                 </div>
             </div>
+        </div>
+            
         </>
     );
 }
