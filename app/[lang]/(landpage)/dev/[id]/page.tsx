@@ -41,7 +41,6 @@ export default async function Development({ params }: { params: { id: string } }
                 />
                 <p className="text-gray-700">{data.description}</p>                
                 <div>
-
                 </div>
                 <div className="mt-4">
                     <a

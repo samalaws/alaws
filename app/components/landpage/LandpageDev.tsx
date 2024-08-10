@@ -1,15 +1,17 @@
-import { useTranslations } from "next-intl";
+import { Locale } from "@/i18n";
+import { getDictionary } from "@/lib/dictionaries";
 
-export default function LandpageDev() {
-  const t = useTranslations("DevPage");
+
+export default async function LandpageDev({ lang }: { lang: Locale }) {
+  const { DevPage } = await getDictionary(lang);
   return (
     <>
       <div className="pl-4 mb-10">
         <h1 className="text-3xl font-bold text-gray-700">
-          {t("title")}
+          {DevPage.title}
         </h1>
         <h3 className="text-gray-500">
-          {t("description")}
+          {DevPage.description}
         </h3>
       </div>
     </>
