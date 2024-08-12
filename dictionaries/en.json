@@ -29,6 +29,13 @@
     "DevCard": {
       "title": "Read More.."
     },
+    "ArtPage": {
+      "title": "All Art Works",
+      "description": "in this section will shown all Art Works"
+    },
+    "ArtCard": {
+      "title": "Read More.."
+    },
     "Footer":{
       "copyright": "SamerAlaws. All Rights Reserved."
     }

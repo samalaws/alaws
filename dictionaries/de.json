@@ -28,6 +28,13 @@
   "DevCard": {
     "title": "Weiterlesen.."
   },
+  "ArtPage": {
+    "title": "Alle Kunstwerke",
+    "description": "in dieser Sektion werden alle Kunstwerke angezeigt"
+  },
+  "ArtCard": {
+    "title": "Weiterlesen.."
+  },
     "Footer":{
       "copyright": "SamerAlaws. Alle Rechte vorbehalten."
     }

@@ -1,12 +1,14 @@
-import DevCard from "@/app/components/landpage/devCard";
+import ArtCard from "@/app/components/landpage/artCard";
 import LandpageDev from "@/app/components/landpage/LandpageDev";
+import LandpageArt from "@/app/components/LandpageArt";
 import prisma from "@/app/lib/db";
 import { i18n, Locale } from "@/i18n";
 import { Languages } from "@prisma/client";
 import { notFound } from "next/navigation";
 
-// Function to determine user-selected language and map to enum value
-function getUserLanguage(locale: Locale): Languages | undefined {
+function getUserLanguage(
+  locale: Locale
+): Languages | undefined {
   switch (locale) {
     case "ar":
       return Languages.Arabic;
@@ -15,19 +17,16 @@ function getUserLanguage(locale: Locale): Languages | undefined {
     case "en":
       return Languages.English;
     default:
-      console.warn(`Unsupported locale: ${locale}`);
+      console.warn(
+        `Unsupported locale: ${locale}`
+      );
       return undefined; // Handle unsupported locales gracefully
   }
 }
 
-// Fetch data based on the devId
-async function getData(devId: string, userLanguage?: Languages) {
-  if (!userLanguage) {
-    console.error("Failed to determine user language");
-    return null; // Handle missing language information
-  }
-
-  const data = await prisma.dev.findMany({
+async function getData(devId: string, userLanguage?: Languages){
+  
+  const data = await prisma.art.findMany({
     where: {
       id: devId,
       languages: {
@@ -40,25 +39,23 @@ async function getData(devId: string, userLanguage?: Languages) {
       id: true,
       title: true,
       description: true,
-      gitHubLink: true,
-      onlineLink: true,
       images: true,
     },
   });
 
-  // If no data is found, return null
-  return data.length > 0 ? data : null;
+  if (!data) {
+    return notFound();
+  }
+  return data;
 }
 
-// Generate static paths for all locales
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({
     lang: locale,
   }));
 }
 
-// Component to render the development page
-export default async function Development({ params }: { params: { id: string, lang: Locale } }) {
+export default async function ArtPage({ params }: { params: { id: string, lang: Locale } }) {
   const userLanguage = getUserLanguage(params.lang); // Get user language
   // Fetch data using the devId and user language
   const data = await getData(params.id, userLanguage);
@@ -68,18 +65,20 @@ export default async function Development({ params }: { params: { id: string, la
     notFound();
   }
 
+  
   return (
     <>
       <div className="max-w-7xl mx-auto px-1">
         <div className=" pt-24 px-4">
-          <LandpageDev lang={params.lang} />
-        </div>
         <div className="mx-auto pt-2 px-4 grid grid-cols-1 gap-8 md:grid-cols-2">
-          {data.map((dev) => (
-            <DevCard dev={dev} key={dev.id} lang={params.lang} />
+          {data.map((art) => (
+            <ArtCard art={art} key={art.id} lang={params.lang} />
           ))}
+        </div>
         </div>
       </div>
     </>
-  );
+
+  )
+  
 }

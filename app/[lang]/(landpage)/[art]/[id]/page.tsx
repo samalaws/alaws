@@ -4,13 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { i18n, Locale } from "@/i18n";
 import { Button } from "@/components/ui/button";
-import {
-  ChevronLeft, 
-} from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 
 async function getData(devtId: string) {
   const data =
-    await prisma.dev.findUnique({
+    await prisma.art.findUnique({
       where: {
         id: devtId,
       },
@@ -20,8 +18,6 @@ async function getData(devtId: string) {
         title: true,
         description: true,
         images: true,
-        gitHubLink: true,
-        onlineLink: true,
       },
     });
 
@@ -65,8 +61,7 @@ function processDescription(
   return processedText;
 }
 
-
-export default async function Development({
+export default async function ArtWork({
   params,
 }: {
   params: { id: string; lang: Locale };
@@ -86,7 +81,7 @@ export default async function Development({
               className="gap-2"
               size="icon">
               <Link
-                href={`/${params.lang}/dev`}>
+                href={`/${params.lang}/art`}>
                 <ChevronLeft />
               </Link>
             </Button>
@@ -113,24 +108,6 @@ export default async function Development({
                 processedDescription,
             }}
           />
-          <div></div>
-          <div className="mt-4">
-            <a
-              href={data.gitHubLink}
-              target="_blank"
-              className="text-blue-500 hover:underline">
-              GitHub
-            </a>
-            <span className="mx-2">
-              |
-            </span>
-            <a
-              href={data.onlineLink}
-              target="_blank"
-              className="text-blue-500 hover:underline">
-              Online
-            </a>
-          </div>
         </div>
       </div>
     </>
