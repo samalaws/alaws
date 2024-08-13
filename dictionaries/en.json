@@ -1,42 +1,71 @@
 {
-    "NavbarLinks": {
-      "dev":{
-        "name": "Development",
-        "href": "en/dev"
-      },
-      "art":{
-        "name": "Art Works",
-        "href": "en/art"
-      },
-      "article":{
-        "name": "Articles",
-        "href": "en/article"
-      },
-      "contact":{
-        "name": "Contact",
-        "href": "en/contact"
-      },
-      "about":{
-        "name": "About",
-        "href": "en/about"
-      }
-      
+  "NavbarLinks": {
+    "dev": {
+      "name": "Development",
+      "href": "en/dev"
     },
-    "DevPage": {
-      "title": "All Devs",
-      "description": "in this section will shown all Dev projects"
+    "art": {
+      "name": "Art Works",
+      "href": "en/art"
     },
-    "DevCard": {
-      "title": "Read More.."
+    "article": {
+      "name": "Articles",
+      "href": "en/article"
     },
-    "ArtPage": {
-      "title": "All Art Works",
-      "description": "in this section will shown all Art Works"
+    "contact": {
+      "name": "Contact",
+      "href": "en/contact"
     },
-    "ArtCard": {
-      "title": "Read More.."
-    },
-    "Footer":{
-      "copyright": "SamerAlaws. All Rights Reserved."
+    "about": {
+      "name": "About",
+      "href": "en/about"
     }
+  },
+  "DevPage": {
+    "title": "All Devs",
+    "description": "in this section will shown all Dev projects"
+  },
+  "DevCard": {
+    "title": "Read More.."
+  },
+  "ArtPage": {
+    "title": "All Art Works",
+    "description": "in this section will shown all Art Works"
+  },
+  "ArtCard": {
+    "title": "Read More.."
+  },
+  "KhatTypes": {
+    "ruqaa": {
+      "name": "Ruqaa"
+    },
+    "naskh": {
+      "name": "Naskh"
+    },
+    "diwani": {
+      "name": "Diwani"
+    },
+    "diwaniJali": {
+      "name": "Diwani Jali"
+    },
+    "kufi": {
+      "name": "Kufi"
+    },
+    "taliek": {
+      "name": "Taliek"
+    },
+    "thuluth": {
+      "name": "Thuluth"
+    }
+  },
+  "ArticlePage": {
+    "title": "All Articles",
+    "description": "in this section will shown all articles and tutorials"
+  },
+  "ArticleCard": {
+    "title": "Read More.."
+  },
+  "Footer": {
+    "copyright": "SamerAlaws. All Rights Reserved."
   }
+}

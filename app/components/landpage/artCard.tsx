@@ -9,6 +9,7 @@ interface DevArtProps {
     title: string;
     description: string;
     images: string[];
+    khat: string;
   };
   lang: Locale; // Add the lang prop here
 }
@@ -23,9 +24,9 @@ export default async function ArtCard({
   art,
   lang,
 }: DevArtProps) {
-  const { ArtCard } =
+  const { ArtCard, KhatTypes } =
     await getDictionary(lang);
-
+  
   return (
     <div className="max-w-md mx-auto rounded-md border-solid border-2 shadow-md mb-10">
       <Image
@@ -43,6 +44,25 @@ export default async function ArtCard({
           {art.description}
         </p>
         <div className="mt-4">
+          <span>
+            { 
+              (art.khat === "Diwani")? 
+              KhatTypes.diwani.name : 
+              (art.khat === "DiwaniJali")? 
+              KhatTypes.diwaniJali.name : 
+              (art.khat === "Thuluth")? 
+              KhatTypes.thuluth.name : 
+              (art.khat === "Ruqaa")?
+              KhatTypes.ruqaa.name:
+              (art.khat === "Naskh")?
+              KhatTypes.naskh.name:
+              (art.khat === "Taliek")?
+              KhatTypes.taliek.name:
+              (art.khat === "Kufi")?
+              KhatTypes.kufi.name:
+              (art.khat)            
+            }
+          </span>
           <span className="mx-2">
             |
           </span>

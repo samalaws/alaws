@@ -1,26 +1,26 @@
 {
   "NavbarLinks": {
-      "dev":{
-        "name": "Entwicklung",
-        "href": "de/dev"
-      },
-      "art":{
-        "name": "Kunstwerk",
-        "href": "de/art"
-      },
-      "article":{
-        "name": "Artikel",
-        "href": "de/article"
-      },
-      "contact":{
-        "name": "Kontakt",
-        "href": "de/contact"
-      },
-      "about":{
-        "name": "Über",
-        "href": "de/about"
-      }
+    "dev": {
+      "name": "Entwicklung",
+      "href": "de/dev"
     },
+    "art": {
+      "name": "Kunstwerk",
+      "href": "de/art"
+    },
+    "article": {
+      "name": "Artikel",
+      "href": "de/article"
+    },
+    "contact": {
+      "name": "Kontakt",
+      "href": "de/contact"
+    },
+    "about": {
+      "name": "Über",
+      "href": "de/about"
+    }
+  },
   "DevPage": {
     "title": "Alle Entwickler",
     "description": "in dieser Sektion werden alle Entwicklerprojekte angezeigt"
@@ -35,7 +35,37 @@
   "ArtCard": {
     "title": "Weiterlesen.."
   },
-    "Footer":{
-      "copyright": "SamerAlaws. Alle Rechte vorbehalten."
+  "KhatTypes": {
+    "ruqaa": {
+      "name": "Ruqaa"
+    },
+    "naskh": {
+      "name": "Naskh"
+    },
+    "diwani": {
+      "name": "Diwani"
+    },
+    "diwaniJali": {
+      "name": "Diwani Jali"
+    },
+    "kufi": {
+      "name": "Kufi"
+    },
+    "taliek": {
+      "name": "Taliek"
+    },
+    "thuluth": {
+      "name": "Thuluth"
     }
+  },
+  "ArticlePage": {
+    "title": " Alle Artikel und Tutorials",
+    "description": "in dieser Sektion werden alle Artikel und Tutorials angezeigt"
+  },
+  "ArticleCard": {
+    "title": "Weiterlesen.."
+  },
+  "Footer": {
+    "copyright": "SamerAlaws. Alle Rechte vorbehalten."
+  }
 }
