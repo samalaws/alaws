@@ -65,6 +65,23 @@
   "ArticleCard": {
     "title": "Weiterlesen.."
   },
+  "ContactPage": {
+    "header": "Kontakt",
+    "CardDescription": "senden Sie eine Nachricht",
+    "name":"Name",
+    "namePlaceholder":"Geben Sie Ihren Namen ein",
+    "email":"Email",
+    "emailPlaceholder":"Geben Sie Ihre Email Adresse ein",
+    "subject":"Betreff",
+    "subjectPlaceholder":"Geben Sie Ihren Betreff ein",
+    "message":"Nachricht",
+    "messagePlaceholder":"Geben Sie Ihre Nachricht ein",
+    "submit":"Senden",
+    "select":"Selektern Sie einen Grund für die Kontaktaufnahme",
+    "selectOptionOne":"Persönlich",
+    "selectOptionTwo":"Geschaeflich",
+    "SubmitButtons":"Senden"
+  },
   "Footer": {
     "copyright": "SamerAlaws. Alle Rechte vorbehalten."
   }

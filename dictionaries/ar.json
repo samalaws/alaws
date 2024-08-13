@@ -65,6 +65,23 @@
   "ArticleCard": {
     "title": "..اقرأ المزيد"
   },
+  "ContactPage": {
+    "header": "اتصل بنا",
+    "CardDescription": "ارسال رسالة",
+    "name":"الاسم",
+    "namePlaceholder":"ادخل اسمك",
+    "email":"البريد الالكتروني",
+    "emailPlaceholder":"ادخل بريدك الالكتروني",
+    "subject":"الموضوع",
+    "subjectPlaceholder":"ادخل الموضوع",
+    "message":"الرسالة",
+    "messagePlaceholder":"ادخل رسالتك",
+    "submit":"ارسال",
+    "select":"حدد سبب التواصل",
+    "selectOptionOne":"شخصي",
+    "selectOptionTwo":"عمل",
+    "SubmitButtons":"ارسال"
+  },
   "Footer":{
     "copyright": "سامر الأوس .. كافة الحقوق محفوظة"
   }

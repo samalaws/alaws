@@ -51,7 +51,7 @@ function processDescription(
     // Check if it's the last sentence or if the next sentence is long enough
     if (
       i === sentences.length - 1 ||
-      sentences[i + 1].length >= 150
+      sentences[i + 1].length >= 50
     ) {
       processedText += "<br>";
     }

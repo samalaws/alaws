@@ -65,6 +65,23 @@
   "ArticleCard": {
     "title": "Read More.."
   },
+  "ContactPage": {
+    "header": "Contact",
+    "CardDescription": "send us a message",
+    "name":"Full Name",
+    "namePlaceholder":"Enter your Full name",
+    "email":"Email",
+    "emailPlaceholder":"Enter your email",
+    "subject":"Subject",
+    "subjectPlaceholder":"Enter your subject",
+    "message":"Message",
+    "messagePlaceholder":"Enter your message",
+    "submit":"Submit",
+    "select":"Select a Reason for Contact",
+    "selectOptionOne":"Personal",
+    "selectOptionTwo":"Business",
+    "SubmitButtons":"Send Message"
+  },
   "Footer": {
     "copyright": "SamerAlaws. All Rights Reserved."
   }
