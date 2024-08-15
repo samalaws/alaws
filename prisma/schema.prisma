@@ -47,6 +47,18 @@ model article{
   createdAt     DateTime  @default(now())
 }
 
+model aboutMe{
+  id            String    @id @default(uuid())
+  title         String
+  description   String
+  header        String
+  content       String
+  footer        String
+  images        String
+  languages     Languages
+  createdAt     DateTime  @default(now())
+}
+
 enum DevStatus {
   draft
   published
