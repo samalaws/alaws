@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from 'next/router';
 import { redirect } from "next/navigation";
 import { SubmitButtons } from "@/app/components/SubmitButtons";
 import { contactSchema } from "@/app/lib/zodSchemas";
@@ -19,22 +20,35 @@ import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
 import { useFormState } from "react-dom";
+import useDictionary from '@/lib/useDictionary';
 
 export default function Contact() {
 
-  const [result, setResult] = useState<Record<string, string>>({});
+  const data: Partial<{
+    SubmitButtons: string;
+    messagePlaceholder: string;
+    message: string;
+    subjectPlaceholder: string;
+    subject: string;
+    selectOptionTwo: string;
+    selectOptionOne: string;
+    select: string;
+    email: string;
+    namePlaceholder: string;
+    emailPlaceholder: string;
+    name: string;
+    header: string;
+    CardDescription: string;
+  }> = useDictionary();  
 
   async function sendEmail(prevState: unknown,formData: FormData) {
     
     const submission = parseWithZod(formData, {
         schema: contactSchema});
-
     if (submission.status !== "success") {
         return submission.reply();
     }
-
     fetch('/api/emails', {
         method: 'POST',
         headers: {
@@ -44,12 +58,10 @@ export default function Contact() {
     })
     .then(response => response.json())
     .then(data => console.log(data))
-    .catch(error => console.error(error));
-
-    console.log(submission.value);
+    .catch(error => console.error(error)); 
     
-
     redirect("/");
+
 }
   const [lastResult, action] = useFormState(sendEmail, undefined);
   const [form, fields] = useForm({
@@ -61,7 +73,8 @@ export default function Contact() {
     },    
     shouldValidate: "onBlur",
     shouldRevalidate: "onInput",
-});
+  });
+  
   return (
     <>
       <div className="max-w-7xl mx-auto px-4">
@@ -81,26 +94,26 @@ export default function Contact() {
           <Card className="mt-4">
             <CardHeader>
               <CardTitle>
-                Contect
+              {data.header}
               </CardTitle>
               <CardDescription>
-                send us a message 
+                {data.CardDescription}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="flex flex-col gap-6">
                 <div className="flex flex-col gap-3">
-                  <Label>Full Name</Label>
+                  <Label>{data.name}</Label>
                   <Input 
-                    placeholder="Enter your full name"
+                    placeholder={data.namePlaceholder}
                     type="text"
                     key={fields.name.key}
                     name={fields.name.name}
                     defaultValue={fields.name.initialValue}
                   />
-                  <Label>Email</Label>
+                  <Label>{data.email}</Label>
                   <Input 
-                    placeholder="Enter your email"
+                    placeholder={data.emailPlaceholder}
                     type="text"
                     key={fields.email.key}
                     name={fields.email.name}
@@ -110,24 +123,24 @@ export default function Contact() {
                     name={fields.reason.name}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Select a Reason for Contact" />
+                      <SelectValue placeholder={data.select} />
                     </SelectTrigger>
                     <SelectContent >
-                      <SelectItem value="Personal">Personal </SelectItem>
-                      <SelectItem value="Business">Business</SelectItem>
+                      <SelectItem value="Personal">{data.selectOptionOne} </SelectItem>
+                      <SelectItem value="Business">{data.selectOptionTwo}</SelectItem>
                     </SelectContent>
                   </Select>
-                  <Label>Subject</Label>
+                  <Label>{data.subject}</Label>
                   <Input 
-                    placeholder="Enter your subject"
+                    placeholder={data.subjectPlaceholder}
                     type="text"
                     key={fields.subject.key}
                     name={fields.subject.name}
                     defaultValue={fields.subject.initialValue}
                   />
-                  <Label>Message</Label>
+                  <Label>{data.message}</Label>
                   <Textarea
-                    placeholder="Enter your message"
+                    placeholder={data.messagePlaceholder}
                     className="h-44"
                     key={fields.message.key}
                     name={fields.message.name}
@@ -137,7 +150,7 @@ export default function Contact() {
               </div>
             </CardContent>
             <CardFooter>
-              <SubmitButtons text={"Send Message"} />
+              <SubmitButtons text={data.SubmitButtons || 'Send'} />
             </CardFooter>
           </Card>
         </form>

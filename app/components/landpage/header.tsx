@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { Locale } from '@/i18n'
 import { getDictionary } from '@/lib/dictionaries'
-import LocaleSelecter from './locale.selecter'
 
 export default async function Header({ lang }: { lang: Locale }) {
   const { NavbarLinks } = await getDictionary(lang)
