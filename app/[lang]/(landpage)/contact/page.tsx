@@ -1,7 +1,7 @@
 "use client";
-import { createDev } from "@/app/actions";
+import { redirect } from "next/navigation";
 import { SubmitButtons } from "@/app/components/SubmitButtons";
-import { devSchema } from "@/app/lib/zodSchemas";
+import { contactSchema } from "@/app/lib/zodSchemas";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -19,28 +19,53 @@ import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 import { useFormState } from "react-dom";
 
 export default function Contact() {
-  const [lastResult, action] =
-    useFormState(createDev, undefined);
+
+  const [result, setResult] = useState<Record<string, string>>({});
+
+  async function sendEmail(prevState: unknown,formData: FormData) {
+    
+    const submission = parseWithZod(formData, {
+        schema: contactSchema});
+
+    if (submission.status !== "success") {
+        return submission.reply();
+    }
+
+    fetch('/api/emails', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submission.value),
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+
+    console.log(submission.value);
+    
+
+    redirect("/");
+}
+  const [lastResult, action] = useFormState(sendEmail, undefined);
   const [form, fields] = useForm({
     lastResult,
     onValidate({ formData }) {
-      return parseWithZod(formData, {
-        schema: devSchema,
-      });
-    },
+        return parseWithZod(formData, {
+            schema: contactSchema,
+        });
+    },    
     shouldValidate: "onBlur",
     shouldRevalidate: "onInput",
-  });
+});
   return (
     <>
       <div className="max-w-7xl mx-auto px-4">
-        <form
-          id={form.id}
-          onSubmit={form.onSubmit}
-          action={action}>
+        <form id={form.id} onSubmit={form.onSubmit} action={action}>
           <div className="flex items-center gap-4">
             <Button
               variant="outline"
@@ -51,7 +76,6 @@ export default function Contact() {
               </Link>
             </Button>
             <h1 className="text-lg tracking-tighter text-gray-600">
-              Contect
             </h1>
           </div>
           <Card className="mt-4">
@@ -70,13 +94,21 @@ export default function Contact() {
                   <Input 
                     placeholder="Enter your full name"
                     type="text"
+                    key={fields.name.key}
+                    name={fields.name.name}
+                    defaultValue={fields.name.initialValue}
                   />
                   <Label>Email</Label>
                   <Input 
                     placeholder="Enter your email"
                     type="text"
+                    key={fields.email.key}
+                    name={fields.email.name}
+                    defaultValue={fields.email.initialValue}
                   />
-                  <Select>
+                  <Select
+                    name={fields.reason.name}
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder="Select a Reason for Contact" />
                     </SelectTrigger>
@@ -89,11 +121,17 @@ export default function Contact() {
                   <Input 
                     placeholder="Enter your subject"
                     type="text"
+                    key={fields.subject.key}
+                    name={fields.subject.name}
+                    defaultValue={fields.subject.initialValue}
                   />
                   <Label>Message</Label>
                   <Textarea
                     placeholder="Enter your message"
                     className="h-44"
+                    key={fields.message.key}
+                    name={fields.message.name}
+                    defaultValue={fields.message.initialValue}
                   />
                 </div>
               </div>

@@ -26,3 +26,11 @@ export const articleSchema = z.object({
     status:         z.enum(["draft", "published", "archived"]).default("draft"),
     languages:      z.enum(["Arabic","English","German"] ).default("English"),
 });
+
+export const contactSchema = z.object({
+    name:           z.string().min(1, { message: "Name is required" }),
+    email:          z.string().min(1, { message: "Email is required" }).email({ message: "Invalid email address" }),
+    reason:         z.enum(["Personal","Business"] ).default("Business"),
+    subject:        z.string().min(1, { message: "Subject is required" }),
+    message:        z.string().min(1, { message: "Message is required" }),
+});
