@@ -1,5 +1,4 @@
 "use client";
-import { useRouter } from 'next/router';
 import { redirect } from "next/navigation";
 import { SubmitButtons } from "@/app/components/SubmitButtons";
 import { contactSchema } from "@/app/lib/zodSchemas";
@@ -22,8 +21,20 @@ import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { useFormState } from "react-dom";
 import useDictionary from '@/lib/useDictionary';
+import { usePathname } from 'next/navigation';
+
+
 
 export default function Contact() {
+
+  function getLang() {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const pathname = usePathname();
+    const languageCode = pathname.split('/')[1];
+    return languageCode
+  }
+
+  const lang = getLang();
 
   const data: Partial<{
     SubmitButtons: string;
@@ -40,7 +51,7 @@ export default function Contact() {
     name: string;
     header: string;
     CardDescription: string;
-  }> = useDictionary();  
+  }> = useDictionary(lang as "en" | "de" | "ar");  
 
   async function sendEmail(prevState: unknown,formData: FormData) {
     

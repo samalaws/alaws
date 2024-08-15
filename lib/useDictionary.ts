@@ -5,7 +5,7 @@ import {
 } from "react";
 
 type lang = Locale
-const useDictionary = () =>  {
+const useDictionary = (lang: "en" | "de" | "ar") =>  {
   const [dictionary, setDictionary] =
     useState({});
 
@@ -14,7 +14,7 @@ const useDictionary = () =>  {
       async () => {
         const loadedDictionary =
           await import(
-            `@/dictionaries/en.json`
+            `@/dictionaries/${lang}.json`
           ).then(
             (module) => module.default
           );
@@ -23,7 +23,7 @@ const useDictionary = () =>  {
         );
       };
     fetchDictionary();
-  }, [dictionary]);
+  }, [dictionary, lang]);
 
   return dictionary;
 };
