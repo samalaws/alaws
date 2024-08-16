@@ -1,3 +1,4 @@
+import { headers } from "next/headers";
 import { z } from "zod";
 
 export const devSchema = z.object({
@@ -34,3 +35,16 @@ export const contactSchema = z.object({
     subject:        z.string().min(1, { message: "Subject is required" }),
     message:        z.string().min(1, { message: "Message is required" }),
 });
+
+export const aboutMeSchema = z.object({
+    title:           z.string().min(1, { message: "Name is required" }),
+    description:     z.string().min(1, { message: "Description is required" }),
+    headerTitle:     z.string().min(1, { message: "Header Title is required" }),
+    header:          z.string().min(1, { message: "Header is required" }),
+    footer:          z.string().min(1, { message: "Footer is required" }),
+    footerTitle:     z.string().min(1, { message: "Footer Title is required" }),
+    content:         z.string().min(1, { message: "Content is required" }),
+    contentTitle:    z.string().min(1, { message: "Content Title is required" }),
+    images:          z.array(z.string()).min(1, "At least one image is required"),
+    languages:      z.enum(["Arabic","English","German"] ).default("English"),
+})

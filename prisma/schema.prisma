@@ -51,10 +51,13 @@ model aboutMe{
   id            String    @id @default(uuid())
   title         String
   description   String
+  headerTitle   String
   header        String
+  contentTitle  String
   content       String
+  footerTitle   String
   footer        String
-  images        String
+  images        String[]
   languages     Languages
   createdAt     DateTime  @default(now())
 }

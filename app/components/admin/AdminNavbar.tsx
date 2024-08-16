@@ -21,6 +21,10 @@ const Links = [
         name: "Articles",
         href: "/admin/article",
     },
+    {
+        name: "About",
+        href: "/admin/about",
+    },
 ]
 
 

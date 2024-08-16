@@ -2,7 +2,7 @@
 import { parseWithZod } from '@conform-to/zod';
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from "next/navigation";
-import { artSchema, devSchema, articleSchema } from "./lib/zodSchemas";
+import { artSchema, devSchema, articleSchema, aboutMeSchema } from "./lib/zodSchemas";
 import prisma from './lib/db';
 
 
@@ -282,6 +282,82 @@ export async function deleteArticle(formData: FormData) {
 }
 
 
+export async function createAboutMe(prevState: unknown,formData: FormData) {
+    const { getUser } = getKindeServerSession();
+    const user = await getUser();
 
+    if (!user || user.email !== process.env.ADMIN_EMAIL) {
+        return redirect("/");
+    }
 
+    const submission = parseWithZod(formData, {
+        schema: aboutMeSchema});
 
+    if (submission.status !== "success") {
+        return submission.reply();
+    }
+
+    const flattenUrls = submission.value.images.flatMap((urlString) =>
+        urlString.split(",").map((url) => url.trim())
+    );
+
+    await prisma.aboutMe.create({
+        data: {
+            title: submission.value.title,
+            description: submission.value.description,
+            headerTitle: submission.value.headerTitle,
+            header: submission.value.header,
+            content: submission.value.content,
+            contentTitle: submission.value.contentTitle,
+            footer: submission.value.footer,
+            footerTitle: submission.value.footerTitle,
+            images: flattenUrls,
+            languages:submission.value.languages,
+        },
+    });
+
+    redirect("/admin/about");
+}
+
+export async function editAboutMe(prevState: any, formData: FormData) {
+    
+    const { getUser } = getKindeServerSession();
+    const user = await getUser();
+
+    if (!user || user.email !== process.env.ADMIN_EMAIL) {
+        return redirect("/");
+    }
+    
+    const submission = parseWithZod(formData ,{
+        schema: aboutMeSchema,
+    });
+
+    if(submission.status !== "success") {
+        return submission.reply();
+    }
+
+    const flattenUrls = submission.value.images.flatMap((urlString) =>
+        urlString.split(",").map((url) => url.trim())
+    );
+
+    const articleId = formData.get("articleId") as string;
+
+    await prisma.aboutMe.update({
+        where: {
+            id: articleId,
+        },
+        data: {
+            title: submission.value.title,
+            description: submission.value.description,
+            headerTitle: submission.value.headerTitle,
+            header: submission.value.header,
+            content: submission.value.content,
+            contentTitle: submission.value.contentTitle,
+            footer: submission.value.footer,
+            footerTitle: submission.value.footerTitle,
+            images: flattenUrls,
+        },
+    });
+
+    redirect("/admin/about");
+}
