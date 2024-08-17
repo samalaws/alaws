@@ -42,7 +42,7 @@ export default async function DevCard({ dev, lang }: DevCardProps) {
           <a
             href={dev.gitHubLink}
             target="_blank"
-            className="text-blue-500 hover:underline"
+            className=" hover:underline"
           >
             GitHub
           </a>
@@ -50,14 +50,14 @@ export default async function DevCard({ dev, lang }: DevCardProps) {
           <a
             href={dev.onlineLink}
             target="_blank"
-            className="text-blue-500 hover:underline"
+            className=" hover:underline"
           >
             Online
           </a>
           <span className="mx-2">|</span>
           <Link
             href={`/dev/${dev.id}`}
-            className="text-blue-500 hover:underline mr-1"
+            className=" hover:underline mr-1"
           >
             {DevCard.title}
           </Link>

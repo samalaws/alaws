@@ -82,7 +82,7 @@ export default async function Article({
               </Link>
             </Button>
           </div>
-          <h1 className=" py-10 text-3xl font-bold text-gray-700 ">
+          <h1 className=" py-10 text-3xl font-bold  ">
             {data.title}
           </h1>
           <Image
@@ -92,13 +92,12 @@ export default async function Article({
             height={1080}
             className="rounded-md mx-auto bg-cover bg-fixed mb-10"
           />
-          <h3 className="py-4 text-sm text-gray-500 ">
+          <h3 className="py-4 text-sm ">
             {new Intl.DateTimeFormat(
                 "en-GB"
               ).format(data.createdAt)}
           </h3>
           <div
-            className="text-gray-700"
             dangerouslySetInnerHTML={{
               __html: processedDescription,
             }}

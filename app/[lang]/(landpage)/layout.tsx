@@ -1,8 +1,16 @@
+import { AdminNavbar } from "@/app/components/admin/AdminNavbar";
 import { Footer } from "@/app/components/landpage/Footer";
+import Header from "@/app/components/landpage/header";
+import LocaleSelecter from "@/app/components/landpage/locale.selecter";
 import Navbar from "@/app/components/landpage/Navbar";
+import ThemeSwitcher from "@/app/components/landpage/theme-switcher";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { i18n, Locale } from "@/i18n";
+import { MenuIcon } from "lucide-react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Link from "next/link";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,9 +38,37 @@ export default function RootLayout({
   return (
     <html lang={params.lang}>
       <body className={inter.className}>
-        <Navbar params={params}>
-          {children}
-        </Navbar>
+          <Navbar params={params}>
+          </Navbar>
+        <div className="p-4">
+          <Sheet>
+              <SheetTrigger asChild>
+                  <Button className=" shrink-0 md:hidden" variant="outline" size="icon">
+                      <MenuIcon className="w-6 h-6" />
+                  </Button>
+              </SheetTrigger>
+              <SheetContent className="w-[250px] sm:flex-col " side={"left"}>
+              <nav className="flex flex-col gap-6 text-lg font-medium mt-2">
+                <Link
+                  href="/"
+                  className="font-bold text-3xl"
+                  >
+                    <h1 className="text-3xl font-thin ">
+                      Samer
+                      <span className="text-3xl  font-bold">
+                        Alaws
+                      </span>
+                    </h1>
+                </Link>
+                <Header lang={params.lang}/>
+                <div className="flex items-center gap-4">
+                  <LocaleSelecter />
+                  <ThemeSwitcher/>
+                </div>
+              </nav>
+              </SheetContent>
+          </Sheet>
+        </div>
         {children}
         <Footer lang={params.lang} />
       </body>

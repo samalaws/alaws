@@ -20,7 +20,6 @@ export default function ThemeSwitcher() {
 
     return (
         <>
-          <LocaleSelecter />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button

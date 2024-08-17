@@ -40,7 +40,7 @@ export default async function ArtCard({
         <h1 className="text-xl font-bold mb-2">
           {art.title}
         </h1>
-        <p className="text-gray-700 h-12 overflow-hidden text-ellipsis">
+        <p className=" h-12 overflow-hidden text-ellipsis">
           {art.description}
         </p>
         <div className="mt-4">
@@ -68,7 +68,7 @@ export default async function ArtCard({
           </span>
           <Link
             href={`/art/${art.id}`}
-            className="text-blue-500 hover:underline mr-1">
+            className=" hover:underline mr-1">
             {ArtCard.title}
           </Link>
         </div>

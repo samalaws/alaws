@@ -91,7 +91,7 @@ export default async function Development({
               </Link>
             </Button>
           </div>
-          <h1 className=" py-10 text-3xl font-bold text-gray-700 ">
+          <h1 className=" py-10 text-3xl font-bold ">
             {data.title}
           </h1>
           <Image
@@ -101,13 +101,12 @@ export default async function Development({
             height={50}
             className="rounded-md mx-auto bg-cover bg-fixed mb-10"
           />
-          <h3 className=" py-4 text-sm text-gray-500 ">
+          <h3 className=" py-4 text-sm ">
             {new Intl.DateTimeFormat(
               "en-GB"
             ).format(data.createdAt)}
           </h3>
           <div
-            className="text-gray-700"
             dangerouslySetInnerHTML={{
               __html:
                 processedDescription,
@@ -118,7 +117,7 @@ export default async function Development({
             <a
               href={data.gitHubLink}
               target="_blank"
-              className="text-blue-500 hover:underline">
+              className="hover:underline">
               GitHub
             </a>
             <span className="mx-2">
@@ -127,7 +126,7 @@ export default async function Development({
             <a
               href={data.onlineLink}
               target="_blank"
-              className="text-blue-500 hover:underline">
+              className="hover:underline">
               Online
             </a>
           </div>

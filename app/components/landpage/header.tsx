@@ -5,27 +5,41 @@ import { getDictionary } from '@/lib/dictionaries'
 export default async function Header({ lang }: { lang: Locale }) {
   const { NavbarLinks } = await getDictionary(lang)
 
+  // #c4f2f2 #073841
+
   return (
-    <header className='py-6'>
-      <nav className='container flex items-center justify-between'>
-        <ul className='flex gap-x-8'>
-          <li className='text-gray-400'>
-            <Link href={`/${lang}/dev`}>{NavbarLinks.dev.name}</Link>
-          </li>
-          <li className='text-gray-400'>
-            <Link href={`/${lang}/art`}>{NavbarLinks.art.name}</Link>
-          </li>
-          <li className='text-gray-400'>
-            <Link href={`/${lang}/article`}>{NavbarLinks.article.name}</Link>
-          </li>
-          <li className='text-gray-400'>
-            <Link href={`/${lang}/contact`}>{NavbarLinks.contact.name}</Link>
-          </li>
-          <li className='text-gray-400'>
-            <Link href={`/${lang}/about`}>{NavbarLinks.about.name}</Link>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <>
+      <Link 
+        href={`/${lang}/dev`}
+        className="text[#073841] text-base px-5 py-1 hover:font-bold hover:underline"
+      >
+        {NavbarLinks.dev.name}
+      </Link>
+      <Link 
+        href={`/${lang}/art`}
+        className="text[#073841] text-base px-5 py-1 hover:font-bold hover:underline"
+        >
+          {NavbarLinks.art.name}
+        </Link>
+      <Link 
+        href={`/${lang}/article`}
+        className="text[#073841] text-base px-5 py-1 hover:font-bold hover:underline"
+        >
+          {NavbarLinks.article.name}
+        </Link>
+      <Link 
+        href={`/${lang}/contact`}
+        className="text[#073841] text-base px-5 py-1 hover:font-bold hover:underline"
+        >
+          {NavbarLinks.contact.name}
+        </Link>
+      <Link 
+        href={`/${lang}/about`}
+        className="text[#073841] text-base px-5 py-1 hover:font-bold hover:underline"
+      >
+        {NavbarLinks.about.name}
+      </Link>
+    </>
+      
   )
 }

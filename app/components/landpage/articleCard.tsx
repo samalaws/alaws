@@ -36,12 +36,12 @@ export default async function ArticleCard({article, lang}: articleProps) {
           <h1 className="text-xl font-bold mb-2">
             {article.title}
           </h1>
-          <p className="text-gray-700 h-12 overflow-hidden text-ellipsis">
+          <p className=" h-12 overflow-hidden text-ellipsis">
             {article.paragraph}
           </p>
         </div>
         <div className="p-6">
-          <Link href={"/article/" + article.id} className="text-blue-500">
+          <Link href={"/article/" + article.id} className="hover:underline">
             {ArticleCard.ArticleCard.title}
           </Link>
         </div>

@@ -11,10 +11,10 @@ export default async function LandpageArt({
   return (
     <>
       <div className="pl-4 mb-10">
-        <h1 className="text-3xl font-bold text-gray-700">
+        <h1 className="text-3xl font-bold">
           {ArtPage.title}
         </h1>
-        <h3 className="text-gray-500">
+        <h3 >
           {ArtPage.description}
         </h3>
       </div>

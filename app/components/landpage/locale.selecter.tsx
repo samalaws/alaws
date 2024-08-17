@@ -18,7 +18,7 @@ export default function LocaleSelecter() {
   }
     return (
         <DropdownMenu>
-            <DropdownMenuTrigger asChild className="w-[75px] text-gray-400 cursor-pointer">
+            <DropdownMenuTrigger asChild className="w-[75px] cursor-pointer">
                 <ChevronDown />
             </DropdownMenuTrigger>
             <DropdownMenuContent>
@@ -27,7 +27,7 @@ export default function LocaleSelecter() {
                         <DropdownMenuItem key={locale} >
                             <Link
                                 href={redirectedPathName(locale)}
-                                className="w-[100px] text-center text-gray-400 hover:text-gray-800 "
+                                className="w-[100px] text-center hover:underline "
                             >
                                 {locale}
                             </Link>                            

@@ -2,32 +2,38 @@ import Link from "next/link";
 import Header from "./header";
 import { Locale } from "@/i18n";
 import ThemeSwitcher from "./theme-switcher";
+import LocaleSelecter from "./locale.selecter";
 
 export default function Navbar({
-  children,
   params
 }: {
-  children: React.ReactNode
   params: { lang: Locale }
 }) {
   return (
-    <nav className=" h-28 2-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex items-center justify-between">
-      <div className="flex items-center gap-4">
-        <Link
-          href="/"
-          className="font-bold text-3xl">
-          <h1 className="text-3xl font-thin text-gray-500">
-            Samer
-            <span className="text-3xl text-gray-700 font-bold">
-              Alaws
-            </span>
-          </h1>
-        </Link>
-        <Header lang={params.lang}/>
-      </div>
-      <div className="flex items-center gap-4">
-        <ThemeSwitcher />
-      </div>
-    </nav>
+    <>
+      <nav className="hidden md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+        <div className="max-w-7xl mx-auto py-10 flex flex-col md:flex-row justify-between items-center px-4">
+          <div className="flex flex-shrink-0 text-center md:text-left">
+            <Link
+              href="/"
+              >
+              <h1 className="text-3xl font-thin">
+                Samer
+                <span className="text-3xl font-bold">
+                  Alaws
+                </span>
+              </h1>
+              </Link>
+            </div>
+            <div className="flex flex-grow justify-center px-32">
+              <Header lang={params.lang}/>
+            </div>
+            <div className="flex flex-shrink-0 items-center">
+              <LocaleSelecter/>
+              <ThemeSwitcher/>
+            </div>
+        </div>
+      </nav>  
+    </>
   );
 }
