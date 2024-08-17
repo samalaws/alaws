@@ -6,9 +6,12 @@ import { MoreHorizontal, PlusCircle } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { unstable_noStore as noStore}  from "next/cache";  
+
 
 
 async function getData() {
+    noStore();
     const data = await prisma.article.findMany({
         orderBy: {
             createdAt: "desc",

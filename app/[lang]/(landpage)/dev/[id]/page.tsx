@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import {
   ChevronLeft, 
 } from "lucide-react";
+import { unstable_noStore as noStore}  from "next/cache";  
+
 
 async function getData(devtId: string) {
   const data =
@@ -71,6 +73,8 @@ export default async function Development({
 }: {
   params: { id: string; lang: Locale };
 }) {
+
+  noStore();
   const data = await getData(params.id);
   const processedDescription =
     processDescription(

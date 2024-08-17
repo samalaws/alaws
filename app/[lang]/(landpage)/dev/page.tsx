@@ -4,6 +4,8 @@ import prisma from "@/app/lib/db";
 import { i18n, Locale } from "@/i18n";
 import { Languages } from "@prisma/client";
 import { notFound } from "next/navigation";
+import { unstable_noStore as noStore}  from "next/cache";  
+
 
 // Function to determine user-selected language and map to enum value
 function getUserLanguage(locale: Locale): Languages | undefined {
@@ -59,6 +61,8 @@ export async function generateStaticParams() {
 
 // Component to render the development page
 export default async function Development({ params }: { params: { id: string, lang: Locale } }) {
+
+  noStore();
   const userLanguage = getUserLanguage(params.lang); // Get user language
   // Fetch data using the devId and user language
   const data = await getData(params.id, userLanguage);

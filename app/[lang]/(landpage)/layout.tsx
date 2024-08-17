@@ -1,4 +1,3 @@
-import { AdminNavbar } from "@/app/components/admin/AdminNavbar";
 import { Footer } from "@/app/components/landpage/Footer";
 import Header from "@/app/components/landpage/header";
 import LocaleSelecter from "@/app/components/landpage/locale.selecter";

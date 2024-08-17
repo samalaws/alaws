@@ -25,6 +25,7 @@ import { usePathname } from 'next/navigation';
 
 
 
+
 export default function Contact() {
 
   function getLang() {
