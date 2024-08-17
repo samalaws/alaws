@@ -25,7 +25,7 @@ export default function Navbar({
               </h1>
               </Link>
             </div>
-            <div className="flex flex-grow justify-center px-32">
+            <div className="flex flex-grow justify-center ">
               <Header lang={params.lang}/>
             </div>
             <div className="flex flex-shrink-0 items-center">
