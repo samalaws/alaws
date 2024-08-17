@@ -11,8 +11,6 @@ import {
     DropdownMenuTrigger,
   } from "@/components/ui/dropdown-menu";
   import { Button } from "@/components/ui/button";
-  import LocaleSwitcher from "./locale.switcher";
-import LocaleSelecter from "./locale.selecter";
 
 
 export default function ThemeSwitcher() {
@@ -32,7 +30,7 @@ export default function ThemeSwitcher() {
                 </span>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
+            <DropdownMenuContent align="center">
               <DropdownMenuItem
                 onClick={() =>
                   setTheme("light")
@@ -44,6 +42,12 @@ export default function ThemeSwitcher() {
                   setTheme("dark")
                 }>
                 Dark
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() =>
+                  setTheme("system")
+                }>
+                System
               </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
