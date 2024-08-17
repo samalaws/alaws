@@ -30,7 +30,7 @@ export async function createDev(prevState: unknown,formData: FormData) {
             title: submission.value.title,
             description: submission.value.description,
             gitHubLink: submission.value.gitHubLink,
-            onlineLink: submission.value.onlineLink,
+            onlineLink: submission.value.onlineLink ?? "",
             images: flattenUrls,
             status: submission.value.status,
             languages:submission.value.languages,
