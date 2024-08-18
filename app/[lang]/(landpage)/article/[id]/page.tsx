@@ -5,7 +5,6 @@ import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { unstable_noStore as noStore}  from "next/cache";  
 
 
 async function getData(devtId: string) {
@@ -67,8 +66,6 @@ export default async function Article({
 }: {
   params: { id: string; lang: Locale };
 }) {
-
-  noStore();
   const data = await getData(params.id);
   const processedDescription = processDescription(data.paragraph);
   return (
