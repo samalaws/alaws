@@ -5,11 +5,9 @@ import Link from "next/link";
 import { i18n, Locale } from "@/i18n";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft } from "lucide-react";
-import { unstable_noStore as noStore}  from "next/cache";  
 
 
 async function getData(devtId: string) {
-  noStore();
   const data =
     await prisma.art.findUnique({
       where: {
