@@ -1,6 +1,6 @@
 import ArtCard from "@/app/components/landpage/artCard";
+import LandpageArt from "@/app/components/landpage/LandpageArt";
 import LandpageDev from "@/app/components/landpage/LandpageDev";
-import LandpageArt from "@/app/components/LandpageArt";
 import prisma from "@/app/lib/db";
 import { i18n, Locale } from "@/i18n";
 import { Languages } from "@prisma/client";
@@ -73,12 +73,13 @@ export default async function ArtPage({ params }: { params: { id: string, lang: 
   return (
     <>
       <div className="max-w-7xl mx-auto px-1">
-        <div className=" pt-24 px-4">
-          <div className="mx-auto pt-2 px-4 grid grid-cols-1 gap-8 md:grid-cols-2">
-            {data.map((art) => (
-              <ArtCard art={art} key={art.id} lang={params.lang} />
-            ))}
-          </div>
+        <div className=" pt-24 pb-10 px-4">
+        <LandpageArt lang={params.lang} />
+        </div>
+        <div className="mx-auto pt-2 px-4 grid grid-cols-1 gap-8 md:grid-cols-2">
+          {data.map((art) => (
+            <ArtCard art={art} key={art.id} lang={params.lang} />
+          ))}
         </div>
       </div>
     </>

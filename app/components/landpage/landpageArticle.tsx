@@ -2,16 +2,16 @@ import { Locale } from "@/i18n";
 import { getDictionary } from "@/lib/dictionaries";
 
 
-export default async function LandpageDev({ lang }: { lang: Locale }) {
-  const { DevPage } = await getDictionary(lang);
+export default async function LandpageArticle({ lang }: { lang: Locale }) {
+  const { ArticlePage } = await getDictionary(lang);
   return (
     <>
       <div className="pl-4">
         <h1 className="text-3xl ">
-          {DevPage.title}
+          {ArticlePage.title}
         </h1>
         <h3 className="pt-5 text-base font-thin" >
-          {DevPage.description}
+          {ArticlePage.description}
         </h3>
       </div>
     </>

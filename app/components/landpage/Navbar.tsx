@@ -28,7 +28,7 @@ export default function Navbar({
             <div className="flex flex-grow justify-center ">
               <Header lang={params.lang}/>
             </div>
-            <div className="flex flex-shrink-0 items-center">
+            <div className="flex flex-shrink-0 items-center pl-5">
               <LocaleSelecter/>
               <ThemeSwitcher/>
             </div>

@@ -21,16 +21,19 @@
       "href": "en/about"
     }
   },
+  "localSelector":{
+      "name": "Language"
+  },
   "DevPage": {
-    "title": "All Devs",
-    "description": "in this section will shown all Dev projects"
+    "title": "Development Projects",
+    "description": "This section presents a selection of software projects we've completed. Each project is accompanied by a description of its features and the technological stack employed in its development."
   },
   "DevCard": {
     "title": "Read More.."
   },
   "ArtPage": {
-    "title": "All Art Works",
-    "description": "in this section will shown all Art Works"
+    "title": "Calligraphy Art Works",
+    "description": "This section features a gallery of Arabic calligraphy art. Each artwork is accompanied by a description that delves into its meaning and the particular calligraphy style utilized."
   },
   "ArtCard": {
     "title": "Read More.."
@@ -59,8 +62,8 @@
     }
   },
   "ArticlePage": {
-    "title": "All Articles",
-    "description": "in this section will shown all articles and tutorials"
+    "title": "Articles & Blogs",
+    "description": "This section presents articles, blogs and personal opinions about some topics that represent a passion for me. "
   },
   "ArticleCard": {
     "title": "Read More.."

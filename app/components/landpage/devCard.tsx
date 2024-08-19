@@ -35,7 +35,7 @@ export default async function DevCard({ dev, lang }: DevCardProps) {
         <h1 className="text-xl font-bold mb-2">
           {dev.title}
         </h1>
-        <p className="text-gray-700 h-12 overflow-hidden text-ellipsis">
+        <p className="h-12 overflow-hidden text-ellipsis">
           {dev.description}
         </p>
         <div className="mt-4">

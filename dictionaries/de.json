@@ -21,16 +21,19 @@
       "href": "de/about"
     }
   },
+  "localSelector":{
+      "name": "Sprache"
+  },
   "DevPage": {
-    "title": "Alle Entwickler",
-    "description": "in dieser Sektion werden alle Entwicklerprojekte angezeigt"
+    "title": "Entwicklungsprojekte",
+    "description": "Hier stellen wir einige umgesetzte Softwareprojekte vor. Zu jedem Projekt finden Sie eine detaillierte Beschreibung und einen Überblick über die eingesetzten Technologien."
   },
   "DevCard": {
     "title": "Weiterlesen.."
   },
   "ArtPage": {
     "title": "Alle Kunstwerke",
-    "description": "in dieser Sektion werden alle Kunstwerke angezeigt"
+    "description": " Dieser Abschnitt stellt verschiedene Kunstwerke der arabischen Kalligrafie vor und erläutert jedes einzelne Werk sowie die dabei zum Einsatz gekommene Schriftart."
   },
   "ArtCard": {
     "title": "Weiterlesen.."
@@ -59,8 +62,8 @@
     }
   },
   "ArticlePage": {
-    "title": " Alle Artikel und Tutorials",
-    "description": "in dieser Sektion werden alle Artikel und Tutorials angezeigt"
+    "title": " Artikel & Blogs",
+    "description": "Dieser Abschnitt präsentiert Artikel, Blogs und persönliche Meinungen zu einigen Themen, die mir eine Leidenschaft bedeuten."
   },
   "ArticleCard": {
     "title": "Weiterlesen.."
