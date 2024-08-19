@@ -1,6 +1,5 @@
 import prisma from "@/app/lib/db";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { sources } from "next/dist/compiled/webpack/webpack";
 import { NextResponse } from "next/server";
 
 export async function GET() {
@@ -39,7 +38,7 @@ export async function GET() {
   return NextResponse.redirect(
     process.env.NODE_ENV ===
       "production"
-      ? sources.env.ONLINE_URL
+      ? "https://alaws.vercel.app"
       : "http://localhost:3000"
   );
   } catch (error) {
