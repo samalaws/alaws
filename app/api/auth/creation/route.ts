@@ -14,7 +14,8 @@ export async function GET() {
   ) {
     throw new Error("Unauthorized");
   }
-  let dbUser =
+  try {
+    let dbUser =
     await prisma.user.findUnique({
       where: {
         id: user.id,
@@ -40,4 +41,8 @@ export async function GET() {
       ? "https://alaws.vercel.app/"
       : "http://localhost:3000"
   );
+  } catch (error) {
+    console.error(error);
+  }
+    
 }
