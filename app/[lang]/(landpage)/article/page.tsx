@@ -3,7 +3,6 @@ import prisma from "@/app/lib/db";
 import { Locale } from "@/i18n";
 import { Languages } from "@prisma/client";
 import { notFound } from "next/navigation";
-import { unstable_noStore as noStore}  from "next/cache";  
 
 
 function getUserLanguage(
@@ -26,7 +25,6 @@ function getUserLanguage(
 
 async function getData(devId: string, userLanguage?: Languages){
   
-  noStore();
   const data = await prisma.article.findMany({
     where: {
       id: devId,

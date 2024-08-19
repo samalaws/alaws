@@ -4,7 +4,6 @@ import { i18n } from "@/i18n"
 import { ChevronDown } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useState } from "react"
 
 export default function LocaleSelecter() {
     const pathName = usePathname()

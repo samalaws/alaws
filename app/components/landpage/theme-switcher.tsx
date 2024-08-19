@@ -14,7 +14,9 @@ import {
 
 
 export default function ThemeSwitcher() {
-  const { setTheme  } = useTheme();
+  const { setTheme, theme  } = useTheme();
+  console.log(theme);
+  
   return (
     <>
       <DropdownMenu>

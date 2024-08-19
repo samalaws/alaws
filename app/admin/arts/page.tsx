@@ -6,13 +6,11 @@ import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components
 import { MoreHorizontal, PlusCircle } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { unstable_noStore as noStore}  from "next/cache";  
 
 
 
 
 async function getData() {
-    noStore();
     const data = await prisma.art.findMany({
         orderBy: {
             createdAt: "desc",

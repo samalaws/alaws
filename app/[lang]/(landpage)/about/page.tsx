@@ -5,7 +5,6 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Github, Instagram, Linkedin } from "lucide-react";
 import Link from "next/link";
-import { unstable_noStore as noStore}  from "next/cache";  
 
 
 
@@ -28,7 +27,6 @@ function getUserLanguage(
   }
 
   async function getData(userLanguage?: Languages){
-    noStore();
     
     const data = await prisma.aboutMe.findMany({
         where: {
