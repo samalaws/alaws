@@ -73,7 +73,7 @@ export default async function Development({ params }: { params: { id: string, la
   return (
     <>
       <div className="max-w-7xl mx-auto px-1">
-        <div className=" pt-24 pb-10 px-4">
+        <div className=" pt-24 px-4">
           <LandpageDev lang={params.lang} />
         </div>
         <div className="mx-auto pt-2 px-4 grid grid-cols-1 gap-8 md:grid-cols-2">

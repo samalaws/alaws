@@ -67,7 +67,7 @@ export default function RootLayout({
                       </h1>
                   </Link>
                   <Header lang={params.lang}/>
-                  <div className="flex flex-col pl-5 gap-5">
+                  <div className="flex items-center gap-4">
                     <LocaleSelecter />
                     <ThemeSwitcher/>
                   </div>

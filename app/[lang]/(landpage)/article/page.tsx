@@ -1,9 +1,9 @@
 import ArticleCard from "@/app/components/landpage/articleCard";
-import LandpageArticle from "@/app/components/landpage/landpageArticle";
 import prisma from "@/app/lib/db";
 import { Locale } from "@/i18n";
 import { Languages } from "@prisma/client";
 import { notFound } from "next/navigation";
+import { unstable_noStore as noStore}  from "next/cache";  
 
 
 function getUserLanguage(
@@ -26,6 +26,7 @@ function getUserLanguage(
 
 async function getData(devId: string, userLanguage?: Languages){
   
+  noStore();
   const data = await prisma.article.findMany({
     where: {
       id: devId,
@@ -62,15 +63,14 @@ export default async function ArticlePage({ params }: { params: { id: string, la
   return (
     <>
       <div className="max-w-7xl mx-auto px-1">
-        <div className=" pt-24 pb-10 px-4">
-        <LandpageArticle lang={params.lang}/>
+        <div className=" pt-24 px-4">
+          <div className="mx-auto pt-2 px-4 grid grid-cols-1 gap-8 md:grid-cols-2">
+            {data.map((article) => (
+              <ArticleCard article={article} key={article.id} lang={params.lang} />
+            ))}
+          </div>
         </div>
-        <div className="mx-auto pt-2 px-4 grid grid-cols-1 gap-8 md:grid-cols-2">
-          {data.map((article) => (
-            <ArticleCard article={article} key={article.id} lang={params.lang} />
-          ))}
-        </div>
-        </div>
+      </div>
     </>
   );
 }

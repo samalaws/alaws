@@ -27,10 +27,10 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             {children}
+        </ThemeProvider>
         <NextSSRPlugin 
           routerConfig={extractRouterConfig(ourFileRouter)}
-        />
-      </ThemeProvider> 
+        /> 
       </body>
     </html>
   );
