@@ -4,10 +4,11 @@ import { i18n } from "@/i18n"
 import { ChevronDown } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useState } from "react"
 
 export default function LocaleSelecter() {
     const pathName = usePathname()
+    const segments = pathName.split('/')
+    console.log(segments[1]);
     
   const redirectedPathName = (locale: string) => {
     if (!pathName) return '/'
@@ -18,7 +19,10 @@ export default function LocaleSelecter() {
   }
     return (
         <DropdownMenu>
-            <DropdownMenuTrigger asChild className="w-[75px] cursor-pointer">
+            <DropdownMenuTrigger className="w-[100px] pr-3 flex items-center cursor-pointer">
+                <span className="text-base">
+                    {segments[1] === 'en' ? 'Language' : segments[1] === 'de' ? 'Sprache' : segments[1] === 'ar' ? 'أختر اللغة' : 'EN'}
+                </span>
                 <ChevronDown />
             </DropdownMenuTrigger>
             <DropdownMenuContent>
