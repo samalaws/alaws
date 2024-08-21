@@ -92,41 +92,50 @@ export default async function About({ params }: { params: { lang: Locale } }) {
                       <h1 className="py-3 text-5xl font-bold ">
                         {<WordFilter text={about.title} />}
                       </h1>
-                      <p className="text-4xl font-thin">{about.description}</p>
+                      <p className=" text-4xl font-thin">{about.description}</p>
                     </div>
                     <div className="py-2">
                       <h1 className="py-2 text-xl ">{about.header}</h1>
-                      <p className=" font-thin">{about.headerTitle}</p>
+                      <p className=" pl-10 font-thin">{about.headerTitle}</p>
                     </div>
                     <div className="py-2">
                       <h1 className="py-2 text-xl ">{about.contentTitle}</h1>
-                      <p className="font-thin">{about.content}</p>
+                      <p className="pl-10 font-thin">{about.content}</p>
                     </div>
                     <div className="py-2">
                       <h1 className="py-2 text-xl ">{about.footerTitle}</h1>
-                      <p className=" font-thin">{about.footer}</p>
-                    </div>
-                    <div className="flex py-4 justify-center gap-x-7">
-                      <Link href="https://www.linkedin.com/in/samer-alaws/">
-                        <Linkedin className="w-8 h-8 text-[#0077B5]" />
-                      </Link>
-                      <Link href="https://www.linkedin.com/in/samer-alaws/">
-                        <Github className="w-8 h-8 text-gray-600" />
-                      </Link>
-                      <Link href="https://www.instagram.com/samalaws/">
-                        <Instagram className="w-8 h-8 text-[#E1306C]" />
-                      </Link>
+                      <p className="pl-10 font-thin">{about.footer}</p>
                     </div>
                   </div>
-                  <div className="w-full md:w-1/2 flex justify-center items-center mb-4 md:mb-0">
-                    <Image 
-                      src={about.images[0]} 
-                      alt={about.title} 
-                      width={350} 
-                      height={350}
-                      className="rounded-3xl"  
-                    />
+                  <div className="flex flex-col md:w-1/2 justify-center items-center mb-4 md:mb-0">
+                    <div className=" grayscale hover:grayscale-0 ">
+                      <Image 
+                        src={about.images[0]} 
+                        alt={about.title} 
+                        width={200} 
+                        height={200}
+                        className="rounded-full"  
+                      />
+                    </div>
+                    <div className=" flex flex-row pt-20 justify-center gap-x-7">
+                        <div className="py-2">
+                          <Link href="https://www.linkedin.com/in/samer-alaws/">
+                            <Linkedin className="w-8 h-8 text-[#0077B5]" />
+                          </Link>
+                        </div>
+                        <div className="py-2">
+                          <Link href="https://www.linkedin.com/in/samer-alaws/">
+                            <Github className="w-8 h-8 text-gray-600" />
+                          </Link>
+                        </div>
+                        <div className="py-2">
+                          <Link href="https://www.instagram.com/samalaws/">
+                            <Instagram className="w-8 h-8 text-[#E1306C]" />
+                          </Link>
+                        </div>
+                    </div>
                   </div>
+                  
                 </div>
               ))}
           </div>
