@@ -45,6 +45,7 @@ export default async function Arts(){
                                 <TableCell>Image</TableCell>
                                 <TableCell>Title</TableCell>
                                 <TableCell>Status</TableCell>
+                                <TableCell>Language</TableCell>
                                 <TableCell>Date</TableCell>
                                 <TableCell>Actions</TableCell>
                             </TableRow>
@@ -63,6 +64,7 @@ export default async function Arts(){
                                         </TableCell>
                                     <TableCell>{item.title}</TableCell>
                                     <TableCell>{item.status}</TableCell>
+                                    <TableCell>{item.languages}</TableCell>
                                     <TableCell>{new Intl.DateTimeFormat("en-GB").format(item.createdAt)}</TableCell>
                                     <TableCell>
                                         <DropdownMenu>
