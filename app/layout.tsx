@@ -9,6 +9,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://alaws.de"),
+  viewport: "width=device-width, initial-scale=1.0",
   title: "Alaws.de",
   description: "Personal website of Samer Alaws, Full Stack Web Developer, 52511 Geilenkirchen, Germany",
 };
