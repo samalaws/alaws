@@ -4,8 +4,6 @@ export const metadata = {
     title: "Samer Alaws | Full Stack Web Developer (Next.js, React)",
     description: "Full Stack Web Developer specializing in modern technologies like Next.js and React.js. Build high-performance web applications.",
     keywords: "Full Stack Web Developer, Next.js, React.js, TypeScript, MongoDB, JavaScript",
-    themeColor: "black",
-    colorScheme: "dark",
     openGraph: {
       title: "Samer Alaws | Full Stack Web Developer",
       description: "Full Stack Web Developer specializing in modern technologies like Next.js and React.js. Build high-performance web applications.",
@@ -24,7 +22,6 @@ export const metadata = {
     icons: {
       shortcut: "/favicon.ico",
     },
-    viewport: "width=device-width, initial-scale=1.0",
     metadataBase: new URL("https://alaws.de"),
     robots: "index, follow",
     canonocal: "https://alaws.de",
