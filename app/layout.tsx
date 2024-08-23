@@ -9,11 +9,34 @@ import { ThemeProvider } from "@/components/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://alaws.de"),
+  title: "Samer Alaws | Full Stack Web Developer (Next.js, React)",
+  description: "Full Stack Web Developer specializing in modern technologies like Next.js and React.js. Build high-performance web applications.",
+  keywords: "Full Stack Web Developer, Next.js, React.js, TypeScript, MongoDB, JavaScript",
+  themeColor: "black",
+  colorScheme: "dark",
+  openGraph: {
+    title: "Samer Alaws | Full Stack Web Developer",
+    description: "Full Stack Web Developer specializing in modern technologies like Next.js and React.js. Build high-performance web applications.",
+    url: "https://alaws.de",
+    siteName: "Samer Alaws",
+    locale: "en-US, de-DE, ar-AR",
+    type: "website",
+  },
+  twitter: {
+    title: "Samer Alaws | Full Stack Web Developer",
+    description: "Full Stack Web Developer specializing in modern technologies like Next.js and React.js. Build high-performance web applications.",
+    creator: "@SamerAlaws",
+    site: "@SamerAlaws",
+    card: "summary_large_image",
+  },
+  icons: {
+    shortcut: "/favicon.ico",
+  },
   viewport: "width=device-width, initial-scale=1.0",
-  title: "Alaws.de",
-  description: "Personal website of Samer Alaws, Full Stack Web Developer, 52511 Geilenkirchen, Germany",
+  metadataBase: new URL("https://alaws.de"),
+  robots: "index, follow",
 };
+
 
 export default function RootLayout({
   children,

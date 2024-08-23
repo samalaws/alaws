@@ -14,6 +14,20 @@ export const metadata = {
       locale: "en-US, de-DE, ar-AR",
       type: "website",
     },
+    twitter: {
+      title: "Samer Alaws | Full Stack Web Developer",
+      description: "Full Stack Web Developer specializing in modern technologies like Next.js and React.js. Build high-performance web applications.",
+      creator: "@SamerAlaws",
+      site: "@SamerAlaws",
+      card: "summary_large_image",
+    },
+    icons: {
+      shortcut: "/favicon.ico",
+    },
+    viewport: "width=device-width, initial-scale=1.0",
+    metadataBase: new URL("https://alaws.de"),
+    robots: "index, follow",
+    canonocal: "https://alaws.de",
   };
 
 export default function Home() {
