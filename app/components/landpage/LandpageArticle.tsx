@@ -14,7 +14,7 @@ export default async function LandpageArticle({
         <h1 className="text-3xl">
           {ArticlePage.title}
         </h1>
-        <h3 className="text-base font-thin">
+        <h3 className="pt-5 font-thin text-lg leading-8">
           {ArticlePage.description}
         </h3>
       </div>

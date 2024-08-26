@@ -57,7 +57,7 @@ function processDescription(
     // Check if it's the last sentence or if the next sentence is long enough
     if (
       i === sentences.length - 1 ||
-      sentences[i + 1].length >= 150
+      sentences[i + 1].length
     ) {
       processedText += "<br>";
     }
@@ -108,13 +108,12 @@ export default async function Development({
               "en-GB"
             ).format(data.createdAt)}
           </h3>
-          <div
+          <div className="font-thin text-lg leading-8"
             dangerouslySetInnerHTML={{
               __html:
                 processedDescription,
             }}
           />
-          <div></div>
           <div className="mt-4">
             <a
               href={data.gitHubLink}

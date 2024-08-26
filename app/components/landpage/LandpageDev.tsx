@@ -10,7 +10,7 @@ export default async function LandpageDev({ lang }: { lang: Locale }) {
         <h1 className="text-3xl ">
           {DevPage.title}
         </h1>
-        <h3 className="text-base font-thin" >
+        <h3 className="pt-5 font-thin text-lg leading-8" >
           {DevPage.description}
         </h3>
       </div>

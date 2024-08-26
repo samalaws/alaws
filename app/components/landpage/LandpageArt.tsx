@@ -14,7 +14,7 @@ export default async function LandpageArt({
         <h1 className="text-3xl">
           {ArtPage.title}
         </h1>
-        <h3 className="text-base font-thin">
+        <h3 className="pt-5 font-thin text-lg leading-8">
           {ArtPage.description}
         </h3>
       </div>
