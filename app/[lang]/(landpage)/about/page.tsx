@@ -112,9 +112,9 @@ export default async function About({ params }: { params: { lang: Locale } }) {
                       <Image 
                         src={about.images[0]} 
                         alt={about.title} 
-                        width={200} 
-                        height={200}
-                        className="rounded-full"  
+                        width={250} 
+                        height={250}
+                        className="rounded-3xl"  
                       />
                     </div>
                     <div className=" flex flex-row pt-20 justify-center gap-x-7">
