@@ -39,7 +39,7 @@ export async function GET() {
   return NextResponse.redirect(
     process.env.NODE_ENV ===
       "production"
-      ? "https://alaws.vercel.app/"
+      ? "https://alaws.de"
       : "http://localhost:3000"
   );
 }
