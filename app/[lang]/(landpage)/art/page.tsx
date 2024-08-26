@@ -4,6 +4,8 @@ import prisma from "@/app/lib/db";
 import { i18n, Locale } from "@/i18n";
 import { Languages } from "@prisma/client";
 import { notFound } from "next/navigation";
+import { unstable_noStore as noStore}  from "next/cache";
+
 
 
 function getUserLanguage(
@@ -59,6 +61,7 @@ export async function generateStaticParams() {
 }
 
 export default async function ArtPage({ params }: { params: { id: string, lang: Locale } }) {
+  noStore();
   const userLanguage = getUserLanguage(params.lang); // Get user language
   // Fetch data using the devId and user language
   const data = await getData(params.id, userLanguage);
