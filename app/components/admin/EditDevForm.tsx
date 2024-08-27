@@ -24,6 +24,7 @@ interface iAppProps {
     data: {
         id:             string;
         title:          string;
+        language:       $Enums.Languages;
         description:    string;
         gitHubLink:     string;
         onlineLink:     string ;
@@ -69,6 +70,24 @@ export function EditDevForm({ data }: iAppProps) {
                 </CardHeader>
                 <CardContent>
                     <div className="flex flex-col gap-6">
+                    <div className="flex flex-col gap-3">
+                    <Label>Languages</Label>
+                                <Select
+                                    name={fields.languages.name}
+                                    defaultValue={fields.languages.initialValue}
+                                    key={fields.languages.key}                                
+                                >
+                                    <SelectTrigger>
+                                        <SelectValue placeholder="Select a language" />
+                                    </SelectTrigger>
+                                    <SelectContent >
+                                        <SelectItem value="English" >English</SelectItem>
+                                        <SelectItem value="Arabic">Arabic</SelectItem>
+                                        <SelectItem value="German">German</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                            <p className="text-red-500">{fields.title.errors}</p>
+                        </div>
                         <div className="flex flex-col gap-3">
                             <Label>Title</Label>
                             <Input  

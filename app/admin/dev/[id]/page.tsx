@@ -14,7 +14,6 @@ async function getData(prodictId: string) {
     if(!data) {
         return notFound();
     }
-    console.log(data);
     return data;
 }
 
