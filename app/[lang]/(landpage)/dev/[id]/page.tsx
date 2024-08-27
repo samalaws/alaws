@@ -101,7 +101,7 @@ export default async function Development({
             alt={"dev image"}
             width={650}
             height={50}
-            className="rounded-md mx-auto bg-cover bg-fixed mb-10"
+            className="rounded-sm object-scale-down w-full h-96 mb-10"
           />
           <h3 className=" py-4 text-sm ">
             {new Intl.DateTimeFormat(

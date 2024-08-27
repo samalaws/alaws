@@ -8,7 +8,6 @@ import { usePathname } from "next/navigation"
 export default function LocaleSelecter() {
     const pathName = usePathname()
     const segments = pathName.split('/')
-    console.log(segments[1]);
     
   const redirectedPathName = (locale: string) => {
     if (!pathName) return '/'
