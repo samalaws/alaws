@@ -110,37 +110,6 @@ export function EditDevForm({
         </CardHeader>
         <CardContent>
           <div className="flex flex-col gap-6">
-          <div className="flex flex-col gap-3">
-              <Label>Status</Label>
-              <Select
-                key={fields.status.key}
-                name={
-                  fields.status.name
-                }
-                defaultValue={
-                  data.status
-                }>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select a status" />
-                </SelectTrigger>
-                <SelectContent>
-                  {statuses.map(
-                    (status) => (
-                      <SelectItem
-                        key={status.id}
-                        value={
-                          status.name
-                        }>
-                        {status.title}
-                      </SelectItem>
-                    )
-                  )}
-                </SelectContent>
-              </Select>
-              <p className="text-red-500">
-                {fields.status.errors}
-              </p>
-            </div>
             <div className="flex flex-col gap-3">
               <Label>Languages</Label>
               <Select
