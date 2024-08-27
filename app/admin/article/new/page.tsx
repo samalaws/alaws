@@ -90,6 +90,7 @@ export default function AddNewArticle(){
                                     name={fields.paragraph.name}
                                     defaultValue={fields.paragraph.initialValue}
                                     key={fields.paragraph.key}
+                                    className="h-72"
                                 />
                                 <p className="text-red-300 text-xs">*{fields.paragraph.errors}</p>
                             </div>
