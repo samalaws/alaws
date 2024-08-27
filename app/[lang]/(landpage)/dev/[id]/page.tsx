@@ -42,7 +42,7 @@ function processDescription(
   description: string
 ) {
   const sentences =
-    description.split(".");
+  description.split(".");
   let processedText = "";
 
   for (
@@ -52,7 +52,7 @@ function processDescription(
   ) {
     const sentence = sentences[i];
     // Add the sentence with a period
-    processedText += `${sentence}.`;
+    processedText += `${sentence}`;
 
     // Check if it's the last sentence or if the next sentence is long enough
     if (
@@ -62,7 +62,6 @@ function processDescription(
       processedText += "<br>";
     }
   }
-
   return processedText;
 }
 
