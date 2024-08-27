@@ -40,6 +40,7 @@ import { editArticle } from "@/app/actions";
 interface iAppProps {
   data: {
     id: string;
+    languages: $Enums.Languages;
     title: string;
     paragraph: string;
     status: $Enums.DevStatus;
@@ -112,6 +113,25 @@ export function EditArticleForm({
         </CardHeader>
         <CardContent>
           <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-3">
+            <Label>Languages</Label>
+            <Select
+                name={fields.languages.name}
+                defaultValue={
+                  data.languages
+                }
+                key={fields.languages.key}                                
+            >
+                <SelectTrigger>
+                    <SelectValue placeholder="Select a status" />
+                </SelectTrigger>
+                <SelectContent >
+                    <SelectItem value="English" >English</SelectItem>
+                    <SelectItem value="Arabic">Arabic</SelectItem>
+                    <SelectItem value="German">German</SelectItem>
+                </SelectContent>
+            </Select>
+        </div>
             <div className="flex flex-col gap-3">
               <Label>Title</Label>
               <Input
