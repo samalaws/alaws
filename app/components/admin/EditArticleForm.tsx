@@ -140,6 +140,7 @@ export function EditArticleForm({
                 key={
                   fields.paragraph.key
                 }
+                className="h-72"
               />
               <p className="text-red-300 text-xs">
                 *

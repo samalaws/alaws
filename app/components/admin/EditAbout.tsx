@@ -197,6 +197,8 @@ export default function EditAbout({
                     fields.headerTitle
                       .key
                   }
+                  className="h-52"
+
                 />
                 <p className="text-red-300 text-xs">
                   *
@@ -246,6 +248,7 @@ export default function EditAbout({
                   key={
                     fields.content.key
                   }
+                  className="h-52"
                 />
                 <p className="text-red-300 text-xs">
                   *
@@ -295,6 +298,7 @@ export default function EditAbout({
                   key={
                     fields.footer.key
                   }
+                  className="h-52"
                 />
                 <p className="text-red-300 text-xs">
                   *

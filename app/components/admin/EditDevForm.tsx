@@ -86,6 +86,7 @@ export function EditDevForm({ data }: iAppProps) {
                                 key={fields.description.key}
                                 name={fields.description.name}
                                 defaultValue={data.description}
+                                className="h-72"
                             />
                             <p className="text-red-500">{fields.description.errors}</p>
                         </div>

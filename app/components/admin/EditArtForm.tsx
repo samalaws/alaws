@@ -138,6 +138,7 @@ export function EditArtForm({ data }: iAppProps) {
                                 name={fields.description.name}
                                 defaultValue={data.description}
                                 key={fields.description.key}
+                                className="h-72"
                             />
                             <p className="text-red-300 text-xs">*{fields.description.errors}</p>
                         </div>

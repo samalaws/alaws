@@ -142,6 +142,7 @@ export default function AddNewArt() {
                                     name={fields.description.name}
                                     defaultValue={fields.description.initialValue}
                                     key={fields.description.key}
+                                    className="h-72"
                                 />
                                 <p className="text-red-300 text-xs">*{fields.description.errors}</p>
                             </div>

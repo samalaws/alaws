@@ -207,6 +207,7 @@ export default function CreateAbout() {
                     fields.headerTitle
                       .key
                   }
+                  className="h-72"
                 />
                 <p className="text-red-300 text-xs">
                   *
