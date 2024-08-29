@@ -38,6 +38,7 @@ function processDescription(
 ) {
   const sentences =
     paragraph.split(".");
+    paragraph.split(":");
   let processedText = "";
 
   for (
@@ -54,7 +55,7 @@ function processDescription(
       i === sentences.length - 1 ||
       sentences[i + 1].length >= 50
     ) {
-      processedText += "<br>";
+      processedText += "<br>"; 
     }
   }
 
