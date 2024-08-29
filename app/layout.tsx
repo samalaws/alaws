@@ -47,13 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <ThemeProvider attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-        </ThemeProvider>
+          {children}
         <NextSSRPlugin 
           routerConfig={extractRouterConfig(ourFileRouter)}
         /> 
