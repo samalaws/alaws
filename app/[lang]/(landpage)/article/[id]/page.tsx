@@ -33,33 +33,10 @@ export async function generateStaticParams() {
     lang: locale,
   }));
 }
-function processDescription(
-  paragraph: string
-) {
-  const sentences =
-    paragraph.split(".");
-    paragraph.split(":");
-  let processedText = "";
 
-  for (
-    let i = 0;
-    i < sentences.length;
-    i++
-  ) {
-    const sentence = sentences[i];
-    // Add the sentence with a period
-    processedText += `${sentence}.`;
-
-    // Check if it's the last sentence or if the next sentence is long enough
-    if (
-      i === sentences.length - 1 ||
-      sentences[i + 1].length >= 50
-    ) {
-      processedText += "<br>"; 
-    }
-  }
-
-  return processedText;
+function processDescription(paragraph: string) {
+  const regex = /[\.\?]/g; // Regular expression for periods, colons, and question marks
+  return paragraph.replace(regex, "$&<br>");
 }
 
 export default async function Article({
@@ -99,7 +76,7 @@ export default async function Article({
                 "en-GB"
               ).format(data.createdAt)}
           </h3>
-          <div
+          <div className="text-base font-thin leading-6"
             dangerouslySetInnerHTML={{
               __html: processedDescription,
             }}
