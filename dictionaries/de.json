@@ -85,6 +85,9 @@
     "selectOptionTwo":"Geschaeflich",
     "SubmitButtons":"Senden"
   },
+  "noDataFound":{
+    "name": "Keine Kunstwerke gefunden"
+  },
   "Footer": {
     "copyright": "SamerAlaws. Alle Rechte vorbehalten."
   }

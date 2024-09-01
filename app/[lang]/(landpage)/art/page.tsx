@@ -5,6 +5,7 @@ import { i18n, Locale } from "@/i18n";
 import { Languages } from "@prisma/client";
 import { notFound } from "next/navigation";
 import { unstable_noStore as noStore}  from "next/cache";
+import NoDataFound from "@/app/components/landpage/noDataFound";
 
 
 
@@ -78,11 +79,16 @@ export default async function ArtPage({ params }: { params: { id: string, lang: 
         <div className="pt-24 pb-16 px-4">
           <LandpageArt lang={params.lang} />
         </div>
-        <div className="mx-auto pt-2 px-4 grid grid-cols-1 gap-8 md:grid-cols-2">
-          {data.map((art) => (
-            <ArtCard art={art} key={art.id} lang={params.lang} />
+        
+          { ((data.length === 0) && 
+          
+          <NoDataFound lang={params.lang} />) || 
+              data.map((art) => (
+              // eslint-disable-next-line react/jsx-key
+              <div className="mx-auto pt-2 px-4 grid grid-cols-1 gap-8 md:grid-cols-2">
+                <ArtCard art={art} key={art.id} lang={params.lang} />
+              </div>
           ))}
-        </div>
       </div>
     </>
 

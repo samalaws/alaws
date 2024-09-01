@@ -85,6 +85,9 @@
     "selectOptionTwo":"عمل",
     "SubmitButtons":"ارسال"
   },
+  "noDataFound":{
+    "name": "لم يتم العثور على أعمال خط عربي لعرضها"
+  },
   "Footer":{
     "copyright": "سامر الأوس .. كافة الحقوق محفوظة"
   }

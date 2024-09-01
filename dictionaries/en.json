@@ -85,6 +85,9 @@
     "selectOptionTwo":"Business",
     "SubmitButtons":"Send Message"
   },
+  "noDataFound":{
+    "name": "No Art works Found"
+  },
   "Footer": {
     "copyright": "SamerAlaws. All Rights Reserved."
   }
